@@ -1,0 +1,166 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+header {
+    border-bottom: 2px solid v.$borders-color;
+    display: flex;
+    align-items: center;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 30px;
+
+        @include mixins.tablet-xl {
+            margin: 0 70px;
+        }
+
+        @include mixins.laptop {
+            margin: 0 90px;
+        }
+
+        @include mixins.desktop {
+            margin: 0 130px;
+        }
+
+        @include mixins.desktop-xl {
+            margin: 0 150px;
+        }
+
+        ul { 
+            display: none; 
+
+            @include mixins.tablet {
+                display: flex;
+                gap: 15px;
+                color: v.$txt-color;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+
+                a {
+                    color: v.$txt-color;
+                    text-decoration: none;
+                    margin-right: 0.5rem;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 10px;
+                    font-size: 18px;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .nav-toggle { 
+            display: inline-flex; 
+            background: transparent;
+            border: 0;
+            font-size: 2rem;
+            line-height: 1;
+            cursor: pointer;
+            color: v.$borders-color;
+
+            &:hover,
+            &:focus-visible {
+                outline: none;
+                color: v.$focus-borders;
+                border: 1px solid v.$focus-borders;
+                padding: 5px;
+            }
+
+            @include mixins.tablet {
+                display: none;
+            }
+        }
+    }
+
+    .backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, .4);
+        border: 0;
+        padding: 0;
+        margin: 0;
+        z-index: 90;
+
+        @include mixins.tablet {
+            display: none;
+        }
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 280px;
+        background: v.$background-color;
+        border-left: 1px solid v.$borders-color;
+        box-shadow: -4px 0 16px rgba(0, 0, 0, .15);
+        transform: translateX(100%);
+        transition: transform .25s ease;
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+
+        &.open { 
+            transform: translateX(0); 
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .75rem 1rem;
+            border-bottom: 1px solid v.$borders-color;
+            
+            button {
+                background: transparent;
+                border: 0;
+                font-size: 2rem;
+                line-height: 1;
+                color: v.$borders-color;
+                cursor: pointer;
+
+                
+                &:hover,
+                &:focus-visible {
+                    color: v.$focus-borders;
+                    outline: none;
+                    border: 1px solid v.$focus-borders;
+                    padding: 2px;
+                }
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding: .75rem 1rem 1rem;
+            margin: 0;
+            display: grid;
+            gap: .5rem;
+        
+            a {
+                display: inline-flex;
+                align-items: center;
+                gap: .5rem;
+                font-size: 18px;
+                padding: .5rem 0;
+                color: v.$txt-color;
+        
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        @include mixins.tablet {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,161 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+#about {
+    .about__container {
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 50px 30px;
+
+        @include mixins.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        @include mixins.tablet-xl {
+            margin: 50px 70px;
+        }
+
+        @include mixins.laptop {
+            margin: 50px 90px;
+        }
+
+        @include mixins.desktop {
+            margin: 80px 130px;
+        }
+
+        @include mixins.desktop-xl {
+            margin: 80px 150px;
+        }
+
+        .photo__container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .img__container {
+                width: 150px;
+                height: auto;
+                object-fit: contain;
+
+                @include mixins.tablet-xl {
+                    width: 230px;
+                }
+
+                @include mixins.laptop {
+                    width: 260px;
+                }
+
+                @include mixins.desktop {
+                    width: 280px;
+                }
+
+                @include mixins.desktop {
+                    width: 300px;
+                }
+                
+                img {
+                    width: 100%;
+                    border-radius: 100%;
+                }
+            }
+        }
+
+        .profile__container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .greetings {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 25px 0;
+
+                @include mixins.tablet {
+                    align-items: flex-start;
+                    margin: 0;
+                }
+
+                p {
+                    color: v.$title-color;
+                    font-size: 24px;
+                    font-weight: 700;
+
+                    @include mixins.tablet {
+                        font-size: 18px;
+                    }
+
+                    @include mixins.desktop {
+                        font-size: 24px;
+                    }
+                }
+
+                h1 {
+                    color: v.$title-color;
+                    font-size: 32px;
+                    text-align: center;
+                    margin-top: 15px;
+
+                    @include mixins.tablet {
+                        text-align: start;
+                        font-size: 25px;
+                        margin-top: 5px;
+                    }
+
+                    @include mixins.tablet-xl {
+                        font-size: 30px;
+                    }
+
+                    @include mixins.desktop {
+                        font-size: 35px;
+                    }
+
+                    @include mixins.desktop-xl {
+                        font-size: 40px;
+                    }
+                }
+            }
+
+            .qualification {
+                p {
+                    color: v.$txt-color;
+                    text-align: center;
+                    font-size: 24px;
+
+                    @include mixins.tablet {
+                        font-size: 18px;
+                        text-align: start;
+                    }
+
+                    @include mixins.tablet-xl {
+                        font-size: 22px;
+                    }
+
+                    @include mixins.desktop {
+                        font-size: 28px;
+                    }
+                }
+            }
+
+            .cta {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center;
+                grid-gap: 10px;
+                margin-top: 30px;
+
+                @include mixins.tablet {
+                    grid-template-columns: repeat(4, 1fr);  
+                    grid-gap: 8px;   
+                    justify-items: normal;
+                    margin-top: 0;
+                }
+
+                @include mixins.tablet-xl {
+                    grid-gap: 15px;
+                }
+            }
+        }
+    }
+}

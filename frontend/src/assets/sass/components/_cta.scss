@@ -1,0 +1,42 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+
+.cta__container {
+    background-color: v.$components;
+    border-radius: 10px;
+    width: 50%;
+    height: 20px;
+    padding: 10px;
+
+    @include mixins.tablet{
+        width: auto;
+        padding: 8px;
+    }
+
+    @include mixins.desktop-xl {
+        padding: 15px;
+    }
+
+    &:hover {
+        background-color: v.$hover-components;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        color: v.$txt-color;
+
+        @include mixins.desktop-xl {
+            font-size: 18px;
+        }
+
+        .picto__container {
+            margin-right: 15px;
+
+            @include mixins.tablet {
+                margin-right: 10px;
+            }
+        }
+    }
+}
