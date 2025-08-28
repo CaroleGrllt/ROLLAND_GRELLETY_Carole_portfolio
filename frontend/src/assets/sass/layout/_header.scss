@@ -13,6 +13,11 @@ header {
         width: 100%;
         margin: 0 30px;
 
+        @include mixins.tablet {
+            margin: 0 50px;
+        }
+
+
         @include mixins.tablet-xl {
             margin: 0 70px;
         }

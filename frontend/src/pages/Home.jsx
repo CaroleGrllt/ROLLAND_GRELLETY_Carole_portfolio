@@ -1,4 +1,10 @@
+//LAYOUTS
+import CardsLayout from "../layouts/CardsLayout";
+
+//COMPONENTS
 import CTA from "../components/CTA"
+
+//REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -50,6 +56,24 @@ export default function Home() {
                                 alt="profile"
                             />                       
                         </div>
+                    </div>
+                </div>
+                <div className="intro">
+                    <p>Spécialisée en développement web <span className="bold"> front-end</span>, mes connaissances en <span className="bold"> back-end </span>me permettent 
+                        d'avoir une compréhension et une vision globales d'un projet et de<span className="bold"> faciliter le travail d'équipe. </span> 
+                    </p>
+                </div>
+            </section>
+            <section id='projects'>
+                <div className="projects__container">
+                    <h2>Découvrir mes réalisations</h2>
+                    <p>Développement d'applications côté front-end et de sites vitrines</p>
+                    <div className="layouts__container">
+                        <CardsLayout>
+                        </CardsLayout> 
+                        <CardsLayout>
+                        </CardsLayout> 
+                        <span>Découvrir plus</span>
                     </div>
                 </div>
             </section>
