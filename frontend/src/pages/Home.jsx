@@ -1,8 +1,15 @@
+import { useState } from "react"
+
+//DATA
+import projectsFirst from '../data/projectsFirst.json'
+import projectsSecond from '../data/projectsSecond.json'
+
 //LAYOUTS
 import CardsLayout from "../layouts/CardsLayout";
 
 //COMPONENTS
 import CTA from "../components/CTA"
+import ProjectCard from "../components/ProjectCard";
 
 //REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
@@ -10,6 +17,9 @@ import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
 export default function Home() {
+
+    const [showMore, setShowMore] = useState(false);
+
     return (
         <>
             <section id="about">
@@ -26,12 +36,12 @@ export default function Home() {
                             <CTA 
                                 source={<FaLinkedin/>}
                                 info='LinkedIn'
-                                link=''
+                                link='https://www.linkedin.com/in/carole-rolland-grellety/'
                             />
                             <CTA 
                                 source={<FaGithub/>}
                                 info='GitHub'
-                                link=''
+                                link='https://github.com/CaroleGrllt/'
                             />
                             <CTA 
                                 source={<MdAlternateEmail/>}
@@ -69,11 +79,41 @@ export default function Home() {
                     <h2>Découvrir mes réalisations</h2>
                     <p>Développement d'applications côté front-end et de sites vitrines</p>
                     <div className="layouts__container">
-                        <CardsLayout>
-                        </CardsLayout> 
-                        <CardsLayout>
-                        </CardsLayout> 
-                        <span>Découvrir plus</span>
+                        <div className="first-layout">
+                            <CardsLayout>
+                                {projectsFirst.map((project) => {
+                                    return <ProjectCard 
+                                        key={project.id}
+                                        id={project.id}
+                                        cover={project.cover}
+                                        alt={project.alt}
+                                        title={project.title}
+                                        subtitle={project.subtitle}
+                                        tags={project.tags}
+                                    />
+                                })}
+                            </CardsLayout> 
+                        </div>
+                        <div className={`second-layout ${showMore ? "open" : ""}`}>
+                            <CardsLayout>
+                                {projectsSecond.map((project) => {
+                                    return <ProjectCard 
+                                        key={project.id}
+                                        id={project.id}
+                                        cover={project.cover}
+                                        alt={project.alt}
+                                        title={project.title}
+                                        subtitle={project.subtitle}
+                                        tags={project.tags}
+                                    />
+                                })}
+                            </CardsLayout> 
+                        </div>
+                    </div>
+                    <div className="btn__container">
+                        <button className="see-more" onClick={() => setShowMore(!showMore)}>
+                            {showMore ? "Replier" : "Découvrir plus"}
+                        </button>                
                     </div>
                 </div>
             </section>

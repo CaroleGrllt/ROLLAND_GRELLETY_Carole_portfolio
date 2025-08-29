@@ -1,9 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layouts/Layout.jsx';
 import Home from './pages/Home.jsx';
-// import Login from './pages/Login.jsx'
-// import Profile from './pages/Profile.jsx'
-
+import Project from './pages/Project.jsx';
 
 export default function App() {
   const router = createBrowserRouter([
@@ -15,10 +13,10 @@ export default function App() {
 							index: true,
 							element: < Home />,
 						},
-						// {
-						// 	path: '/login',
-						// 	element: < Login />,
-						// },
+						{
+							path: '/project',
+							element: < Project />,
+						},
 						{
 							path: '*',
 							element: < Home />,

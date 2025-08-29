@@ -35,6 +35,7 @@
         display: flex;
         justify-content: center;
         color: v.$txt-color;
+        flex-direction: row;
 
         @include mixins.desktop-xl {
             font-size: 18px;

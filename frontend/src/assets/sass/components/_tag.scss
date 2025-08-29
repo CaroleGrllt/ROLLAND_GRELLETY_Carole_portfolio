@@ -1,0 +1,12 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.tags-list {
+    display: flex;
+    gap: 30px;
+    margin: 15px 0 20px;
+
+    img {
+        width: 35px;
+    }
+}

@@ -2,15 +2,20 @@
 @use '../utils/mixins';
 
 #projects {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+
+    @include mixins.laptop {
+        margin-bottom: 130px;
+    }
 
     .projects__container {
         margin: 0 30px;
+        display: flex;
+        flex-direction: column;
 
         @include mixins.tablet {
-            flex-direction: row;
             justify-content: space-between;
-            margin: 50px;
+            margin:0 50px;
         }
 
         @include mixins.tablet-xl {
@@ -31,6 +36,11 @@
 
         h2 {
             color: v.$title-color;
+            font-size: 32px;
+
+            @include mixins.tablet {
+                font-size: 36px;
+            }
         }
 
         p {
@@ -46,6 +56,68 @@
                 font-size: 22px;
             }
         }
-    }
 
+        .layouts__container {
+            margin-top: 50px;
+
+            .second-layout {
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, overflow 0.6s ease-in-out;
+  
+                &.open {
+                    overflow: visible;
+                    max-height: 2000px; // CHANGER ICI
+                    opacity: 1;
+                }
+            }
+        }
+
+        .btn__container {
+            width: 50%;
+            margin-top: 30px;
+            align-self: center;
+
+
+            @include mixins.tablet-xl {
+                width: 30%;
+            }
+
+            button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: v.$components;
+                border-radius: 10px;
+                padding: 10px;
+                border: none;
+                color: v.$txt-color;
+                text-align: center;
+                cursor: pointer;
+
+                @include mixins.tablet{
+                    padding: 8px;
+                }
+
+                @include mixins.laptop {
+                    padding: 10px;
+                }
+
+                @include mixins.desktop {
+                    padding: 12px;
+                }
+
+
+                @include mixins.desktop-xl {
+                    padding: 15px;
+                }
+
+                &:hover {
+                    background-color: v.$hover-components;
+                }
+            }
+        }
+    }
 }

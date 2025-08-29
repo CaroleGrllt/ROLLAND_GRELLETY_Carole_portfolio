@@ -1,0 +1,14 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+
+.cards__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 50px;
+    margin: 20px 0;
+
+    @include mixins.tablet-xl {
+        grid-template-columns: repeat(2, 1fr);  
+    }
+}

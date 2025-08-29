@@ -2,7 +2,11 @@
 @use '../utils/mixins';
 
 #about {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+
+    @include mixins.laptop {
+        margin-bottom: 130px;
+    }
     
     .about__container {
         display: flex;
@@ -37,33 +41,33 @@
             align-items: center;
 
             .img__container {
-                width: 150px;
-                height: auto;
-                object-fit: contain;
 
-                @include mixins.tablet {
-                    width: 180px;
-                }
-
-                @include mixins.tablet-xl {
-                    width: 230px;
-                }
-
-                @include mixins.laptop {
-                    width: 260px;
-                }
-
-                @include mixins.desktop {
-                    width: 280px;
-                }
-
-                @include mixins.desktop {
-                    width: 300px;
-                }
                 
                 img {
-                    width: 100%;
+                    width: 150px;
+                    height: auto;
+                    object-fit: contain;
                     border-radius: 100%;
+
+                    @include mixins.tablet {
+                        width: 180px;
+                    }
+
+                    @include mixins.tablet-xl {
+                        width: 200px;
+                    }
+
+                    @include mixins.laptop {
+                        width: 260px;
+                    }
+
+                    @include mixins.desktop {
+                        width: 280px;
+                    }
+
+                    @include mixins.desktop {
+                        width: 300px;
+                    }
                 }
             }
         }

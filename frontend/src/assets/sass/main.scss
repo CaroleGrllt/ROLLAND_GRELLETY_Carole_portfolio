@@ -4,7 +4,10 @@
 @use './utils/variables';
 @use './layout/body';
 @use './layout/header';
+@use './layout/cardsLayout';
 @use './pages/home';
 @use './sections/about';
 @use './sections/projects';
 @use './components/cta';
+@use './components/projectCard';
+@use './components/tag';

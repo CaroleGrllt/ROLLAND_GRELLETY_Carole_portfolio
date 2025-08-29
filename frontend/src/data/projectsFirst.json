@@ -1,0 +1,94 @@
+[
+    {
+        "id": "1",
+        "title": "BOOKI",
+        "year": "(2023)",
+        "cover": "/cover.png",
+        "alt": "Illustration projet Booki",
+        "picture": "",
+        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "tags": [
+            "/logo512.png",
+            "/logo512.png",
+            "/logo512.png"
+        ],
+        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
+        "skills": [
+            "- Définir la structure d'une page web à partir d'une maquette.",
+            "- Intégrer du contenu conformément à la maquette.",
+            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
+            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
+            "- Utiliser un système de gestion de versions pour le suivi du projet."
+        ],
+        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+    },
+    {
+        "id": "2",
+        "title": "BOOKI",
+        "year": "(2023)",
+        "cover": "/cover.png",
+        "alt": "Illustration projet Booki",
+        "picture": "",
+        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "tags": [
+            "/logo512.png",
+            "/logo512.png",
+            "/logo512.png"
+        ],
+        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
+        "skills": [
+            "- Définir la structure d'une page web à partir d'une maquette.",
+            "- Intégrer du contenu conformément à la maquette.",
+            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
+            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
+            "- Utiliser un système de gestion de versions pour le suivi du projet."
+        ],
+        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+    },
+    {
+        "id": "3",
+        "title": "BOOKI",
+        "year": "(2023)",
+        "cover": "/cover.png",
+        "alt": "Illustration projet Booki",
+        "picture": "",
+        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "tags": [
+            "/logo512.png",
+            "/logo512.png",
+            "/logo512.png"
+        ],
+        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
+        "skills": [
+            "- Définir la structure d'une page web à partir d'une maquette.",
+            "- Intégrer du contenu conformément à la maquette.",
+            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
+            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
+            "- Utiliser un système de gestion de versions pour le suivi du projet."
+        ],
+        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+    },
+    {
+        "id": "4",
+        "title": "BOOKI",
+        "year": "(2023)",
+        "cover": "/cover.png",
+        "alt": "Illustration projet Booki",
+        "picture": "",
+        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "tags": [
+            "/logo512.png",
+            "/logo512.png",
+            "/logo512.png"
+        ],
+        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
+        "skills": [
+            "- Définir la structure d'une page web à partir d'une maquette.",
+            "- Intégrer du contenu conformément à la maquette.",
+            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
+            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
+            "- Utiliser un système de gestion de versions pour le suivi du projet."
+        ],
+        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+    }
+]
