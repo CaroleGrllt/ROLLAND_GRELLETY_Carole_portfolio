@@ -1,0 +1,110 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+#education {
+    margin-bottom: 100px;
+
+    @include mixins.laptop {
+        margin-bottom: 130px;
+    }
+
+    .education__container {
+        margin: 0 30px;
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            justify-content: space-between;
+            margin:0 50px;
+        }
+
+        @include mixins.tablet-xl {
+            margin: 0 70px;
+        }
+
+        @include mixins.laptop {
+            margin: 0 90px;
+        }
+
+        @include mixins.desktop {
+            margin: 0 130px;
+        }
+
+        @include mixins.desktop-xl {
+            margin: 0 150px;
+        }
+
+        h2 {
+            color: v.$title-color;
+            font-size: 32px;
+            margin-bottom: 50px;
+
+            @include mixins.tablet {
+                font-size: 36px;
+            }
+        }
+
+        .layout__container {
+
+            max-width: 700px;
+            margin: 0 auto;
+
+            .first__container, .third__container {
+                border-left: v.$borders-color dashed 2px;
+                border-bottom: v.$borders-color dashed 2px;
+                height: fit-content;
+                position: relative;
+                padding: 30px;
+
+                .point {
+                    width: 16px;
+                    height: 16px;
+                    background-color: v.$borders-color;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 50%;               
+                    left: -9px;
+                    transform: translateY(-50%); 
+                }
+            }
+
+            .second__container {
+                border-right: v.$borders-color dashed 2px;
+                border-bottom: v.$borders-color dashed 2px;
+                height: fit-content;
+                position: relative;
+                padding: 30px;
+
+
+                .point {
+                    width: 16px;
+                    height: 16px;
+                    background-color: v.$borders-color;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 50%;               
+                    right: -9px;
+                    transform: translateY(-50%); 
+                }
+            }
+
+            .fourth__container {
+                border-right: v.$borders-color dashed 2px;
+                height: fit-content;
+                position: relative;
+                padding: 30px;
+
+                .point {
+                    width: 16px;
+                    height: 16px;
+                    background-color: v.$borders-color;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 50%;              
+                    right: -9px;
+                    transform: translateY(-50%); 
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+[
+    {
+        "id": "4",
+        "className":"fourth_xp",
+        "title": "Développeur d'application JavaScript React",
+        "year": "2024-2025",
+        "place": "OpenClassrooms",
+        "type": "Titre RNCP niveau VI (bac+3/4)"
+    },
+    {
+        "id": "3",
+        "className":"third_xp",
+        "title": "Assitante développeuse web",
+        "year": "2023-2024",
+        "place": "Agence de communication Manitoba",
+        "type": "Alternance"
+    },
+    {
+        "id": "2",
+        "className":"second_xp",
+        "title": "Développeur intégrateur web",
+        "year": "2023-2024",
+        "place": "OpenClassrooms",
+        "type": "Titre RNCP niveau V (bac+2)"
+    },
+    {
+        "id": "1",
+        "className":"first_xp",
+        "title": "Responsable-adjointe, service archives-documentation",
+        "year": "2018-2022",
+        "place": "Mairie de Maisons-Alfort",
+        "type": "CDD fonction publique territoriale"
+    }
+]

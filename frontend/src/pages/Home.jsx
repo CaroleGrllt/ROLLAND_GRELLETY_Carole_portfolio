@@ -12,12 +12,16 @@ import CardsLayout from "../layouts/CardsLayout";
 import CTA from "../components/CTA"
 import ProjectCard from "../components/ProjectCard";
 import SkillsCard from '../components/SkillsCard';
+import EducationCard from "../components/EducationCard";
 
 //REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
-
+import { MdWork } from "react-icons/md";
+import { IoSchoolSharp } from "react-icons/io5";
+{/* <IoSchoolSharp /> */}
+{/* <MdWork /> */}
 export default function Home() {
 
     const [showMore, setShowMore] = useState(false);
@@ -132,6 +136,57 @@ export default function Home() {
                                 />
                             })}
                         </CardsLayout>
+                    </div>
+                </div>
+            </section>
+            <section id="education">
+                <div className="education__container">
+                    <h2>Parcourir mes formations et expériences professionnelles</h2>
+                    <div className="layout__container">
+                        <div className="first__container">
+                            <div className="point"></div>
+                            <EducationCard 
+                                className="fourth_xp"
+                                picto={<IoSchoolSharp />}
+                                title="Développeur d'application JavaScript React"
+                                type="Titre RNCP niveau VI (bac+3/4)"
+                                place="OpenClassrooms"
+                                year="2024-2025"
+                            />
+                        </div>
+                        <div className="second__container">
+                            <div className="point"></div>
+                            <EducationCard 
+                                className="third_xp"
+                                picto={<MdWork />}
+                                title="Assitante développeuse web"
+                                type="Alternance"
+                                place="Agence de communication Manitoba"
+                                year="2023-2024"
+                            />                        
+                        </div>
+                        <div className="third__container">
+                            <div className="point"></div>
+                            <EducationCard 
+                                className="second_xp"
+                                picto={<IoSchoolSharp />}
+                                title="Développeur intégrateur web"
+                                type="Titre RNCP niveau V (bac+2)"
+                                place="OpenClassrooms"
+                                year="2023-2024"
+                            />                        
+                        </div>
+                        <div className="fourth__container">
+                            <div className="point"></div>
+                            <EducationCard 
+                                className="first_xp"
+                                picto={<MdWork />}
+                                title="Responsable-adjointe, service archives-documentation"
+                                type="CDD fonction publique territoriale"
+                                place="Mairie de Maisons-Alfort"
+                                year="2018-2022"
+                            />                        
+                        </div>
                     </div>
                 </div>
             </section>
