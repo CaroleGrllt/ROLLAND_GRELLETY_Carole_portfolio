@@ -1,0 +1,47 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+#skills {
+    margin-bottom: 100px;
+
+    @include mixins.laptop {
+        margin-bottom: 130px;
+    }
+
+    .skills__container {
+        margin: 0 30px;
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            justify-content: space-between;
+            margin:0 50px;
+        }
+
+        @include mixins.tablet-xl {
+            margin: 0 70px;
+        }
+
+        @include mixins.laptop {
+            margin: 0 90px;
+        }
+
+        @include mixins.desktop {
+            margin: 0 130px;
+        }
+
+        @include mixins.desktop-xl {
+            margin: 0 150px;
+        }
+
+        h2 {
+            color: v.$title-color;
+            font-size: 32px;
+            margin-bottom: 50px;
+
+            @include mixins.tablet {
+                font-size: 36px;
+            }
+        }
+    }
+}

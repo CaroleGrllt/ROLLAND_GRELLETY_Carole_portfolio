@@ -3,6 +3,7 @@ import { useState } from "react"
 //DATA
 import projectsFirst from '../data/projectsFirst.json'
 import projectsSecond from '../data/projectsSecond.json'
+import skills from '../data/skills.json';
 
 //LAYOUTS
 import CardsLayout from "../layouts/CardsLayout";
@@ -10,6 +11,7 @@ import CardsLayout from "../layouts/CardsLayout";
 //COMPONENTS
 import CTA from "../components/CTA"
 import ProjectCard from "../components/ProjectCard";
+import SkillsCard from '../components/SkillsCard';
 
 //REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
@@ -114,6 +116,22 @@ export default function Home() {
                         <button className="see-more" onClick={() => setShowMore(!showMore)}>
                             {showMore ? "Replier" : "Découvrir plus"}
                         </button>                
+                    </div>
+                </div>
+            </section>
+            <section id="skills">
+                <div className="skills__container">
+                    <h2>Explorer mes compétences techniques</h2>
+                    <div className="layout__container">
+                        <CardsLayout>
+                            {skills.map((skill) => {
+                                return <SkillsCard 
+                                    key={skill.id}
+                                    title={skill.title}
+                                    tags={skill.tags}
+                                />
+                            })}
+                        </CardsLayout>
                     </div>
                 </div>
             </section>

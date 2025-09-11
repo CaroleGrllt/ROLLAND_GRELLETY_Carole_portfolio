@@ -5,7 +5,7 @@ import { FaRegEye } from "react-icons/fa";
 
 export default function ProjectCard({id, title, cover, alt, subtitle, tags}) {
     return (
-        <article>
+        <article className='article__project'>
             <Link to={"/project/" + id}>
                 <div className="cover__container">
                     <img src={cover} alt={alt}/>
@@ -31,6 +31,5 @@ export default function ProjectCard({id, title, cover, alt, subtitle, tags}) {
                 </div>
             </Link>
         </article>
-
     )
 }
