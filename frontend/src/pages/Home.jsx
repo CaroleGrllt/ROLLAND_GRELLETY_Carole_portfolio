@@ -142,9 +142,10 @@ export default function Home() {
             <section id="education">
                 <div className="education__container">
                     <h2>Parcourir mes formations et expériences professionnelles</h2>
-                    <div className="layout__container">
+                    <div className="education__container">
                         <div className="first__container">
                             <div className="point"></div>
+                            <div className="arrow"></div>
                             <EducationCard 
                                 className="fourth_xp"
                                 picto={<IoSchoolSharp />}

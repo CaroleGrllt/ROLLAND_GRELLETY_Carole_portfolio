@@ -5,10 +5,10 @@ export default function EducationCard({className, picto, title, type, place, yea
             <div className="picto__container">
                 {picto}
             </div>
-            <div className="txt-container">
+            <div className="txt__container">
                 <h3>{title}</h3>
-                <p>{year}</p>
                 <p>{place}</p>
+                <p>{year}</p>
                 <p>{type}</p>
             </div>
         </article>
