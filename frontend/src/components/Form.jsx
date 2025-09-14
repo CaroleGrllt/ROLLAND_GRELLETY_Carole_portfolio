@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Modal from './Modal';
 
 export default function Form() {
     const [firstName, setFirstName]     = useState('')
@@ -10,9 +11,8 @@ export default function Form() {
     const [success, setSuccess]         = useState('');
     const [website, setWebsite]         = useState('') //Honeypot for spam/bot
     const [error, setError]             = useState('') // erreur générale (réseau / serveur)
-
+    const [modal, setModal]             = useState(false)
     const emptyFieldErrors = {firstName: '', lastName: '', email: '', phone: '', message: '', consent: '', website: ''}
-
     const [fieldErrors, setFieldErrors] = useState(emptyFieldErrors) //erreur de champ
 
     const containsXMLPayload = (s = '') => {
@@ -130,8 +130,8 @@ export default function Form() {
     return (
         <form onSubmit={(e) => onSubmit(e)}>
             <div className="identity__inputs">
-                <div className="formcarry-block">
-                    <label htmlFor="firstName">Prénom<span className='red__star'>*</span></label>
+                <div className="formcarry-block firstName__content">
+                    <label htmlFor="firstName">Prénom <span className='red__star'>*</span></label>
                     <input 
                         id="firstName" 
                         name="firstName"
@@ -149,8 +149,8 @@ export default function Form() {
                       <p id="firstName-error" role="alert" className="field-error">{fieldErrors.firstName}</p>
                     )}
                 </div>
-                <div className="formcarry-block">
-                    <label htmlFor="lastName">Nom<span className='red__star'>*</span></label>
+                <div className="formcarry-block lastName__content">
+                    <label htmlFor="lastName">Nom <span className='red__star'>*</span></label>
                     <input 
                         id="lastName" 
                         name="lastName"
@@ -170,8 +170,8 @@ export default function Form() {
                 </div>
             </div>
             <div className="contact__details__imputs">
-                <div className="formcarry-block">
-                    <label htmlFor="email">Adresse email<span className='red__star'>*</span></label>
+                <div className="formcarry-block email__content">
+                    <label htmlFor="email">Email <span className='red__star'>*</span></label>
                     <input 
                         id="email"
                         name="email"
@@ -190,8 +190,8 @@ export default function Form() {
                       <p id="email-error" role="alert" className="field-error">{fieldErrors.email}</p>
                     )}
                 </div>
-                <div className="formcarry-block">
-                    <label htmlFor="phone">Numéro de téléphone</label>
+                <div className="formcarry-block phone__content">
+                    <label htmlFor="phone">Téléphone</label>
                     <input 
                         id="phone"
                         name="phone"
@@ -211,8 +211,8 @@ export default function Form() {
                     )}
                 </div>
             </div>
-            <div className="formcarry-block message__input">
-                <label htmlFor="message">Message<span className='red__star'>*</span></label>
+            <div className="formcarry-block message__content">
+                <label htmlFor="message">Message <span className='red__star'>*</span></label>
                 <textarea 
                     id="message"
                     name="message"
@@ -229,7 +229,7 @@ export default function Form() {
                   <p id="message-error" role="alert" className="field-error">{fieldErrors.message}</p>
                 )}
             </div>
-            <div className="flex items-start gap-3">
+            <div className="consent__content">
                 <input
                     id="consent"
                     name="consent"
@@ -241,13 +241,20 @@ export default function Form() {
                     }}
                     className="checkbox__input"
                 />
-                <div>
+                <div className='consent__text'>
                     <label htmlFor="consent">
-                        J’autorise l’utilisation de mes données personnelles pour traiter ma demande et j’ai pris
-                        connaissance de la <a href="/politique-confidentialite">politique de
-                        confidentialité</a>.
-                    </label>
-                    <p id="consent-help">
+                        J’autorise l’utilisation de mes données personnelles pour traiter ma demande et j’ai pris connaissance de la
+                    </label>{" "}
+                    <button
+                        type="button"
+                        className="rgpd__modal"
+                        onClick={() => setModal(true)}
+                        aria-haspopup="dialog"
+                        aria-controls="rgpd-dialog"
+                    >
+                        politique de confidentialité
+                    </button>.                    
+                    <p className="consent-help">
                         Vous pouvez retirer votre consentement et demander la suppression de vos données à tout moment.
                     </p>
                     {fieldErrors.consent && (
@@ -258,7 +265,7 @@ export default function Form() {
 
             {/* Honeypot caché pour bot/spam */}
             <div style={{ position: "absolute", left: "-9999px" }} aria-hidden>
-            <label htmlFor="website">Votre site web</label>
+                <label htmlFor="website">Votre site web</label>
                 <input
                     id="website"
                     name="website"
@@ -269,11 +276,15 @@ export default function Form() {
                     autoComplete="off"
                 />
             </div>
-            <p><span className='red__star'>*</span> Champs requis</p>
-            <div className="formcarry-block">  
+            <div className="formcarry-block send__content">  
                 <button type="submit">Envoyer</button>
-                {success && <p role="status" aria-live="polite" className="form-success">{success}</p>}
             </div>
+            <p className='required__fields'><span className='red__star'>*</span> Champs requis</p>
+            {success && <p role="status" aria-live="polite" className="form-success">{success}</p>}
+            <Modal 
+                open={modal}
+                onClose={() => setModal(false)}
+            />
         </form>
     )
 }

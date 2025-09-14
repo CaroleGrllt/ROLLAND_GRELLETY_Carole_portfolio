@@ -1,0 +1,98 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.modal__backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5000;
+
+    .modal__dialog {
+        width: 90%;
+        max-width: 700px;
+        max-height: 90vh;
+        background-color: v.$background-color;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
+        padding: 50px;
+        overflow-y: auto; // scroll uniquement dans la modale
+
+        h2 {
+            color: v.$title-color;
+        }
+
+        .modal__body {
+            margin-bottom: 50px;
+
+            p {
+                color: v.$txt-color;
+                line-height: 1.5;
+                font-size: 14px;
+
+                @include mixins.tablet-xl{
+                    font-size: 16px;
+                } 
+
+                a {
+                    color: v.$txt-color;
+                    font-weight: 700;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .close__modal {
+            width: 50%;
+            align-self: flex-start;
+            margin-top: 20px;
+
+
+            @include mixins.tablet-xl {
+                width: 30%;
+            }
+
+            button {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: v.$components;
+                border-radius: 10px;
+                padding: 10px;
+                border: none;
+                color: v.$txt-color;
+                text-align: center;
+                cursor: pointer;
+
+                @include mixins.tablet{
+                    padding: 8px;
+                }
+
+                @include mixins.laptop {
+                    padding: 10px;
+                }
+
+                @include mixins.desktop {
+                    padding: 12px;
+                }
+
+
+                @include mixins.desktop-xl {
+                    padding: 15px;
+                    font-size: 18px;
+
+                }
+
+                &:hover {
+                    background-color: v.$hover-components;
+                }
+            }
+        }
+    }
+}

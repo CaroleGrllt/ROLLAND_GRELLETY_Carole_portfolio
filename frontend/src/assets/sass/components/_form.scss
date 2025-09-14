@@ -2,5 +2,235 @@
 @use '../utils/mixins';
 
 form {
+    display: flex;
+    flex-direction: column;
     
+    .identity__inputs, .contact__details__imputs {
+
+        @include mixins.tablet {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .firstName__content, .lastName__content, .email__content, .phone__content {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+
+            @include mixins.tablet {
+                margin-bottom: 15px;
+            }
+
+            label {
+                color: v.$txt-color;
+                margin-bottom: 5px;
+
+                @include mixins.tablet {
+                    margin-bottom: 10px;
+                }
+                
+                .red__star {
+                    color: v.$red;
+                }
+            }
+
+            input {
+                background-color: v.$components;
+                border: none;
+                border-radius: 15px;
+                padding: 7px;
+                color: v.$txt-color;
+
+                @include mixins.tablet {
+                    padding: 10px;
+                }
+
+                &::placeholder {
+                    font-size: 14px;
+                }
+
+                &:focus-visible {
+                    border-color: v.$focus-borders;       // <-- la bordure change
+                    outline: 2px solid v.$focus-borders;  // <-- anneau de focus (accessibilité)
+                    outline-offset: 2px;
+                }
+            }
+
+            .field-error {
+                color: v.$red;
+                margin-top: 5px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .message__content {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+
+        @include mixins.tablet {
+            margin-bottom: 15px;
+        }
+
+
+        label {
+            color: v.$txt-color;
+            margin-bottom: 5px;
+
+            @include mixins.tablet {
+                margin-bottom: 10px;
+            } 
+
+            .red__star {
+                color: v.$red;
+            }
+        }
+
+        textarea {
+            background-color: v.$components;
+            border: none;
+            border-radius: 15px;
+            padding: 7px;
+            color: v.$txt-color;
+
+            @include mixins.tablet {
+                padding: 10px;
+            }
+
+            &::placeholder {
+                font-size: 14px;
+            }
+
+            &:focus-visible {
+                border-color: v.$focus-borders;       // <-- la bordure change
+                outline: 2px solid v.$focus-borders;  // <-- anneau de focus (accessibilité)
+                outline-offset: 2px;
+            }
+        }
+
+        .field-error {
+            color: v.$red;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+    }
+
+    .consent__content {
+        display: flex;
+        align-items: flex-start;
+
+        input {
+            background-color: v.$components;
+            border-radius: 15px;
+            color: v.$txt-color;
+            margin-top: 4px;
+
+            &:focus-visible {
+                border-color: v.$focus-borders;       // <-- la bordure change
+                outline: 2px solid v.$focus-borders;  // <-- anneau de focus (accessibilité)
+                outline-offset: 2px;
+            }
+        }
+
+        .consent__text {
+            margin-left: 8px;
+
+            label {
+                color: v.$txt-color;
+                font-size: 12px;
+            }
+
+            button {
+                display: inline;
+                background-color: transparent;
+                border: none;
+                color: v.$txt-color;
+                font-size: 12px;
+                padding: 0;
+                text-decoration: underline;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            p.consent-help {
+                color: v.$txt-color;
+                font-size: 12px;
+                line-height: 1.5;
+                margin-top: 5px;
+            }
+
+            .field-error {
+                color: v.$red;
+                margin-top: 5px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .send__content {
+        width: 50%;
+        align-self: flex-start;
+        margin-top: 20px;
+
+
+        @include mixins.tablet-xl {
+            width: 30%;
+        }
+
+        button {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: v.$components;
+            border-radius: 10px;
+            padding: 10px;
+            border: none;
+            color: v.$txt-color;
+            text-align: center;
+            cursor: pointer;
+
+            @include mixins.tablet{
+                padding: 8px;
+            }
+
+            @include mixins.laptop {
+                padding: 10px;
+            }
+
+            @include mixins.desktop {
+                padding: 12px;
+            }
+
+
+            @include mixins.desktop-xl {
+                padding: 15px;
+                font-size: 18px;
+
+            }
+
+            &:hover {
+                background-color: v.$hover-components;
+            }
+        }
+    }
+
+    p.required__fields {
+        color: v.$txt-color;
+        margin: 10px 0;
+        font-size: 14px;
+
+        .red__star {
+            color: v.$red;
+        }
+    }
+
+    p.form-success {
+        color: v.$green;
+        margin: 20px 0;
+    }
 }

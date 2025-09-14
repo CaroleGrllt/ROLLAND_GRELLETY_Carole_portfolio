@@ -52,11 +52,22 @@
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
-                border-bottom: 2px solid v.$borders-color;
+                border-top: 2px solid v.$borders-color;
+                padding-top: 20px;
+                margin-top: 20px;
+
+                @include mixins.tablet {
+                    padding-top: 30px;
+                    margin-top: 30px;
+                }
 
                 @include mixins.tablet-xl {
-                    border-bottom: none;
+                    justify-content: center;
+                    padding: 30px;
+                    border-top: none;
                     border-right: 2px solid v.$borders-color;
+                    padding-top: 0;
+                    margin-top: 0;
                 }
 
                 h3 {
@@ -81,6 +92,12 @@
                     display: flex;
                     gap: 15px;
                     margin: 15px 0 20px;
+                }
+            }
+
+            .form__container {
+                @include mixins.tablet-xl {
+                    padding: 30px;
                 }
             }
         }
