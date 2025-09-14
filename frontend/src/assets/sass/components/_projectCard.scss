@@ -61,17 +61,35 @@ article.article__project {
                 display: flex;
                 gap: 8px;
                 flex-direction: column;
+                
+                h3 {
+                    font-size: 20px;
+                    color: v.$title-color;
+                    margin: 0;
+
+                    @include mixins.tablet-xl {
+                        font-size: 22px;
+                    }
+
+                    @include mixins.desktop {
+                        font-size: 24px;
+                    }
+                }
+
+                span {
+                    color: v.$txt-color;
+                    margin: 0;
+                }
             }
 
-            h3 {
-                font-size: 24px;
-                color: v.$title-color;
-                margin: 0;
-            }
+            .cta__container {
+                margin: 0 auto !important;
+                width: 55% !important;
 
-            span {
-                color: v.$txt-color;
-                margin: 0;
+                @include mixins.tablet-xl {
+                    width: auto !important;
+                    margin: 0 !important;
+                }
             }
         }
     }

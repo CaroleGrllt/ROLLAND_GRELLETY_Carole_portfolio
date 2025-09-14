@@ -1,0 +1,88 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+#contact {
+    margin-bottom: 100px;
+
+    .contact__container {
+        margin: 0 30px;
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            justify-content: space-between;
+            margin:0 50px;
+        }
+
+        @include mixins.tablet-xl {
+            margin: 0 70px;
+        }
+
+        @include mixins.laptop {
+            margin: 0 90px;
+        }
+
+        @include mixins.desktop {
+            margin: 0 130px;
+        }
+
+        @include mixins.desktop-xl {
+            margin: 0 150px;
+        }
+
+        h2 {
+            color: v.$title-color;
+            font-size: 32px;
+            margin-bottom: 50px;
+
+            @include mixins.tablet {
+                font-size: 36px;
+            }
+        }
+
+        .contact__content {
+            display: flex;
+            flex-direction: column-reverse;
+
+            @include mixins.tablet-xl {
+                flex-direction: row;
+            }
+
+            .identity__container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                border-bottom: 2px solid v.$borders-color;
+
+                @include mixins.tablet-xl {
+                    border-bottom: none;
+                    border-right: 2px solid v.$borders-color;
+                }
+
+                h3 {
+                    font-size: 20px;
+                    margin: 0 0 10px;
+                    color: v.$title-color;
+
+                    @include mixins.tablet-xl {
+                        font-size: 22px;
+                    }
+
+                    @include mixins.desktop {
+                        font-size: 24px;
+                    }
+                }
+
+                span {
+                    color: v.$txt-color;
+                }
+
+                .contact__cta {
+                    display: flex;
+                    gap: 15px;
+                    margin: 15px 0 20px;
+                }
+            }
+        }
+    }
+}

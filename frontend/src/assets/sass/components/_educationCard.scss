@@ -24,6 +24,14 @@ article.article__education {
             font-size: 20px;
             margin: 0 0 10px;
             color: v.$title-color;
+
+            @include mixins.tablet-xl {
+                font-size: 22px;
+            }
+
+            @include mixins.desktop {
+                font-size: 24px;
+            }
         }
 
         p{

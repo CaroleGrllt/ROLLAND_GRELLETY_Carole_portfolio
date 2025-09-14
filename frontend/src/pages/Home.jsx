@@ -13,6 +13,7 @@ import CTA from "../components/CTA"
 import ProjectCard from "../components/ProjectCard";
 import SkillsCard from '../components/SkillsCard';
 import EducationCard from "../components/EducationCard";
+import Form from "../components/Form";
 
 //REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
@@ -52,12 +53,12 @@ export default function Home() {
                             <CTA 
                                 source={<MdAlternateEmail/>}
                                 info='E-mail'
-                                link='mailto:carole.rolland.grellety@gmail.com'
+                                link='mailto:carole.rolland.grellety@proton.me'
                             />
                             <CTA 
                                 source={<BsFillTelephoneFill/>}
                                 info='Téléphone'
-                                link='tel:0033610843867'
+                                link='tel:0033756857155'
                             />
                         </div>
                     </div>
@@ -142,7 +143,7 @@ export default function Home() {
             <section id="education">
                 <div className="education__container">
                     <h2>Parcourir mes formations et expériences professionnelles</h2>
-                    <div className="education__container">
+                    <div className="education__content">
                         <div className="first__container">
                             <div className="point"></div>
                             <div className="arrow"></div>
@@ -187,6 +188,40 @@ export default function Home() {
                                 place="Mairie de Maisons-Alfort"
                                 year="2018-2022"
                             />                        
+                        </div>
+                        <CTA 
+                            source={<FaFileDownload />}
+                            info="Télécharger le CV"
+                            link="/cv.pdf"
+                            download="Carole-Rolland-Grellety-CV.pdf"
+                        />
+                    </div>
+                </div>
+            </section>
+            <section id="contact">
+                <div className="contact__container">
+                    <h2>Me contacter</h2>
+                    <div className="contact__content">
+                        <div className="identity__container">
+                            <h3>Carole ROLLAND GRELLETY</h3>
+                            <span className="contact__place">78600, Maisons-Laffitte<br/>(Yvelines, Ile-de-France)</span>
+                            <span className="contact__tel">+33 (0)7 56 85 71 55</span>
+                            <span className="contact__email">carole.rolland.grellety@proton.me</span>
+                            <div className="contact__cta">
+                            <CTA 
+                                source={<FaLinkedin/>}
+                                info='LinkedIn'
+                                link='https://www.linkedin.com/in/carole-rolland-grellety/'
+                            />
+                            <CTA 
+                                source={<FaGithub/>}
+                                info='GitHub'
+                                link='https://github.com/CaroleGrllt/'
+                            />
+                            </div>
+                        </div>
+                        <div className="form__container">
+                            <Form/>
                         </div>
                     </div>
                 </div>

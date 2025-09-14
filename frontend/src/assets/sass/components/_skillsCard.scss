@@ -10,7 +10,6 @@ article.article__skills {
     flex-direction: column;
 
     @include mixins.tablet {
-        // flex-direction: row;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         padding: 15px 30px;
@@ -27,6 +26,14 @@ article.article__skills {
             font-size: 20px;
             color: v.$title-color;
             margin: 0;
+
+            @include mixins.tablet-xl {
+                font-size: 22px;
+            }
+
+            @include mixins.desktop {
+                font-size: 24px;
+            }
         }
     }
 }

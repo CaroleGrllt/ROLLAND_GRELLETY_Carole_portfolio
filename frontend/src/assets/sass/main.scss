@@ -10,8 +10,10 @@
 @use './sections/projects';
 @use './sections/skills';
 @use './sections/education';
+@use './sections/contact';
 @use './components/cta';
 @use './components/projectCard';
 @use './components/tag';
 @use './components/skillsCard';
 @use './components/educationCard';
+@use './components/form';

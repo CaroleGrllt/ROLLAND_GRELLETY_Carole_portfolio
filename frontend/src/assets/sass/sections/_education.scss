@@ -44,7 +44,7 @@
             }
         }
 
-        .education__container {
+        .education__content {
             max-width: 450px;
             margin: 0 auto;
 
@@ -115,6 +115,15 @@
                     top: 50%;              
                     right: -9px;
                     transform: translateY(-50%); 
+                }
+            }
+
+            .cta__container {
+                width: auto !important;
+                margin: 30px 0 0 !important;
+
+                @include mixins.tablet {
+                    margin: 50px 0 0 !important;
                 }
             }
         }
