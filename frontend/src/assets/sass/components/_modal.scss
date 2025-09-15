@@ -43,6 +43,12 @@
                     &:hover {
                         cursor: pointer;
                     }
+
+                    &:focus-visible {
+                        border-color: v.$focus-borders;       // <-- la bordure change
+                        outline: 2px solid v.$focus-borders;  // <-- anneau de focus (accessibilité)
+                        outline-offset: 2px;
+                    }
                 }
             }
         }
@@ -91,6 +97,12 @@
 
                 &:hover {
                     background-color: v.$hover-components;
+                }
+
+                &:focus-visible {
+                    border-color: v.$focus-borders;       // <-- la bordure change
+                    outline: 2px solid v.$focus-borders;  // <-- anneau de focus (accessibilité)
+                    outline-offset: 2px;
                 }
             }
         }

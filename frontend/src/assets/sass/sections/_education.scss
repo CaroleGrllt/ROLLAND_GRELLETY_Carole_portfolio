@@ -46,7 +46,48 @@
 
         .education__content {
             max-width: 450px;
-            margin: 0 auto;
+            margin: 0 auto 30px;
+
+            @include mixins.tablet-xl {
+                margin: 0 auto 45px;
+            }
+
+            @include mixins.laptop {
+                max-width: 100%; 
+                margin: 0 0 60px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    border-left: v.$borders-color dashed 2px;
+                    z-index: 0;
+                }
+            }
+
+                .arrow-desktop {
+                    display: none;
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    top: 0;                       /* en haut de la frise */
+                    left: 50%;                    /* centrée sur la ligne */
+                    transform: translateX(-50%) rotate(45deg); /* orientation inchangée */
+                    transform-origin: center;
+                    border-top: v.$borders-color solid 3px;
+                    border-left: v.$borders-color solid 3px;
+                    z-index: 2;                   
+    
+                    @include mixins.laptop {
+                        display: block;
+                    }
+                }
 
             .first__container, .third__container {
                 height: fit-content;
@@ -55,16 +96,12 @@
                 border-left: v.$borders-color dashed 2px;
                 border-bottom: v.$borders-color dashed 2px;
 
-                
-                .point {
-                    width: 16px;
-                    height: 16px;
-                    background-color: v.$borders-color;
-                    border-radius: 100%;
-                    position: absolute;
-                    top: 50%;               
-                    left: -9px;
-                    transform: translateY(-50%); 
+                @include mixins.laptop {
+                    width: 50%;
+                    padding: 20px 40px 20px 0px;                
+                    border: none !important;  
+                    align-self: flex-start;
+                    box-sizing: border-box;
                 }
 
                 .arrow {
@@ -77,6 +114,28 @@
                     transform-origin: center;
                     border-top: v.$borders-color solid 3px;
                     border-left: v.$borders-color solid 3px;
+
+                    @include mixins.laptop {
+                        display: none;
+                    }
+
+                }
+                
+                .point {
+                    width: 16px;
+                    height: 16px;
+                    background-color: v.$borders-color;
+                    border-radius: 100%;
+                    position: absolute;
+                    top: 50%;               
+                    left: -9px;
+                    transform: translateY(-50%); 
+
+                    @include mixins.laptop {
+                        right: -8px;     
+                        left: auto;
+                        z-index: 1;
+                    }
                 }
             }
 
@@ -87,6 +146,13 @@
                 border-right: v.$borders-color dashed 2px;
                 border-bottom: v.$borders-color dashed 2px;
 
+                @include mixins.laptop {
+                    width: 50%;
+                    padding: 20px 0px 20px 40px;                
+                    border: none !important;  
+                    align-self: flex-end;
+                    box-sizing: border-box;
+                }
 
                 .point {
                     width: 16px;
@@ -97,6 +163,12 @@
                     top: 50%;               
                     right: -9px;
                     transform: translateY(-50%); 
+
+                    @include mixins.laptop {
+                        left: -8px;     
+                        right: auto;
+                        z-index: 1;
+                    }
                 }
             }
 
@@ -105,6 +177,14 @@
                 position: relative;
                 padding: 30px;
                 border-right: v.$borders-color dashed 2px;
+
+                @include mixins.laptop {
+                    width: 50%;
+                    padding: 20px 0px 20px 40px;                
+                    border: none !important;  
+                    align-self: flex-end;
+                    box-sizing: border-box;
+                }
 
                 .point {
                     width: 16px;
@@ -115,16 +195,26 @@
                     top: 50%;              
                     right: -9px;
                     transform: translateY(-50%); 
+
+                    @include mixins.laptop {
+                        left: -8px;     
+                        right: auto;
+                        z-index: 1;
+                    }
                 }
             }
+        }
 
-            .cta__container {
-                width: auto !important;
-                margin: 30px 0 0 !important;
+        .cta__container {
+            width: 70% !important;
+            margin: 0 auto !important;
 
-                @include mixins.tablet {
-                    margin: 50px 0 0 !important;
-                }
+            @include mixins.tablet {
+                width: 50% !important;
+            }
+
+            @include mixins.laptop {
+                width: 30% !important;
             }
         }
     }

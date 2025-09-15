@@ -144,9 +144,10 @@ export default function Home() {
                 <div className="education__container">
                     <h2>Parcourir mes formations et expériences professionnelles</h2>
                     <div className="education__content">
+                        <div className="arrow-desktop"></div>
                         <div className="first__container">
-                            <div className="point"></div>
                             <div className="arrow"></div>
+                            <div className="point"></div>
                             <EducationCard 
                                 className="fourth_xp"
                                 picto={<IoSchoolSharp />}
@@ -189,13 +190,13 @@ export default function Home() {
                                 year="2018-2022"
                             />                        
                         </div>
-                        <CTA 
-                            source={<FaFileDownload />}
-                            info="Télécharger le CV"
-                            link="/cv.pdf"
-                            download="Carole-Rolland-Grellety-CV.pdf"
-                        />
                     </div>
+                    <CTA 
+                        source={<FaFileDownload />}
+                        info="Télécharger le CV"
+                        link="/cv.pdf"
+                        download="Carole-Rolland-Grellety-CV.pdf"
+                    />
                 </div>
             </section>
             <section id="contact">

@@ -21,7 +21,7 @@ export default function Modal({ open, onClose }) {
                 <div className="modal__body">
                     <p>
                         Les informations recueillies à partir de ce formulaire sont enregistrées par Carole ROLLAND GRELLETY 
-                        afin de répondre à votre demande de contact. 
+                        afin de répondre à votre demande de contact. Les données ne sont pas diffusées à des tiers. <br/>
                         Les champs marqués d’un astérisque (*) sont obligatoires.  
                         Vos données (nom, prénom, adresse e-mail, téléphone) sont transmises et hébergées par notre prestataire Formcarry, 
                         dont les serveurs sont situés dans l’Espace Économique Européen (EEE).  
