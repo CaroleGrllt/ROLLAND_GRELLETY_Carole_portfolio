@@ -83,7 +83,7 @@ export default function Home() {
             <section id='projects'>
                 <div className="projects__container">
                     <h2>Découvrir mes réalisations</h2>
-                    <p>Développement d'applications côté front-end et de sites vitrines</p>
+                    <p>Développement d'applications côté front-end et de sites vitrines.</p>
                     <div className="layouts__container">
                         <div className="first-layout">
                             <CardsLayout>
@@ -126,6 +126,7 @@ export default function Home() {
             <section id="skills">
                 <div className="skills__container">
                     <h2>Explorer mes compétences techniques</h2>
+                    <p>Une stack moderne pour développer des applications web fiables et performantes.</p>
                     <div className="layout__container">
                         <CardsLayout>
                             {skills.map((skill) => {
@@ -201,6 +202,7 @@ export default function Home() {
             <section id="contact">
                 <div className="contact__container">
                     <h2>Me contacter</h2>
+                    <p className="subtitle">Vous avez un projet ? Une opportunité ? Je serai ravie d'en parler avec vous !</p>
                     <div className="contact__content">
                         <div className="identity__container">
                             <h3>Carole ROLLAND GRELLETY</h3>

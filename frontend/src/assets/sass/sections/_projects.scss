@@ -2,10 +2,10 @@
 @use '../utils/mixins';
 
 #projects {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 
     @include mixins.laptop {
-        margin-bottom: 130px;
+        margin-bottom: 100px;
     }
 
     .projects__container {

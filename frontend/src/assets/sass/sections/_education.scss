@@ -2,10 +2,10 @@
 @use '../utils/mixins';
 
 #education {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 
     @include mixins.laptop {
-        margin-bottom: 130px;
+        margin-bottom: 100px;
     }
 
     .education__container {
@@ -98,7 +98,7 @@
 
                 @include mixins.laptop {
                     width: 50%;
-                    padding: 20px 40px 20px 0px;                
+                    padding: 20px 40px 0px 0px;                
                     border: none !important;  
                     align-self: flex-start;
                     box-sizing: border-box;
@@ -148,7 +148,7 @@
 
                 @include mixins.laptop {
                     width: 50%;
-                    padding: 20px 0px 20px 40px;                
+                    padding: 20px 0px 0px 40px;                
                     border: none !important;  
                     align-self: flex-end;
                     box-sizing: border-box;
@@ -180,7 +180,7 @@
 
                 @include mixins.laptop {
                     width: 50%;
-                    padding: 20px 0px 20px 40px;                
+                    padding: 20px 0px 0px 40px;                
                     border: none !important;  
                     align-self: flex-end;
                     box-sizing: border-box;
