@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
@@ -32,24 +32,24 @@ export default function Header() {
         {/* desktop */}
         <ul className="nav-links">
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#projects">
                 Projets
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#skills">
                 Compétences
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#education">
                     Formations
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#contact">
                     Contact
-                </Link>
+                </HashLink>
             </li>
         </ul>
 
@@ -95,24 +95,24 @@ export default function Header() {
             </div>
             <ul className="drawer-links" onClick={() => setOpen(false)}>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#projects">
                 Projets
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#skills">
                 Compétences
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#education">
                     Formations
-                </Link>
+                </HashLink>
             </li>
             <li>
-                <Link className="main-nav-item" to="">
+                <HashLink smooth className="main-nav-item" to="#contact">
                     Contact
-                </Link>
+                </HashLink>
             </li>
             </ul>
           </aside>

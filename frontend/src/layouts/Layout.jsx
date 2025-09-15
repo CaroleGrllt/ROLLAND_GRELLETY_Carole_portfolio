@@ -1,5 +1,6 @@
 import { Outlet } from "react-router" 
 import Header from "./Header"
+import ArrowUp from "../components/ArrowUp"
 
 export default function Layout () {
 
@@ -9,6 +10,7 @@ export default function Layout () {
             <main>
                 <Outlet />
             </main>
+            <ArrowUp />
         </>
     )
 }

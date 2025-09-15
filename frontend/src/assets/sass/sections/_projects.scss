@@ -51,10 +51,6 @@
             @include mixins.tablet-xl {
                 font-size: 20px;
             }
-
-            @include mixins.desktop {
-                font-size: 22px;
-            }
         }
 
         .layouts__container {

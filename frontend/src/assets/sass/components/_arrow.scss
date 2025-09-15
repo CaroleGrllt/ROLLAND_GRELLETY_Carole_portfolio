@@ -1,0 +1,52 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.scroll__btn {
+    position: fixed;
+    bottom: 30px;
+    right: 5px;
+    background-color: rgba(13, 40, 71, 0.4);
+    border: none;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    @include mixins.tablet {
+        right: 10px;
+    }
+
+    @include mixins.laptop {
+        right: 15px;
+    }
+
+    @include mixins.desktop {
+        right: 30px;
+    }
+
+    &.scroll__btn__off {
+        opacity: 0;
+        pointer-events: none;
+    }        
+
+    &.scroll__btn__on {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+
+    svg {
+        color: rgb(40, 112, 189);
+        font-size: 20px;
+
+        @include mixins.desktop {
+            font-size: 24px;
+        }
+
+        &:hover {
+            transform: translateY(-3px); // petit effet "saut" au hover
+        }   
+    }
+}

@@ -21,8 +21,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { MdWork } from "react-icons/md";
 import { IoSchoolSharp } from "react-icons/io5";
-{/* <IoSchoolSharp /> */}
-{/* <MdWork /> */}
+
 export default function Home() {
 
     const [showMore, setShowMore] = useState(false);
