@@ -4,10 +4,12 @@
 .tags-list {
     display: flex;
     gap: 30px;
-
+    align-items: center;
     margin: 15px 0;
 
     img {
-        width: 30px;
+        width: 45px;
+        height: 30px;
+        object-fit: contain;
     }
 }

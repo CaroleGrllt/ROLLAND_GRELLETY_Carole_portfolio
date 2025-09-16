@@ -3,11 +3,21 @@
 
 
 .cta__container {
+    display: flex;
+    justify-content: center;
     background-color: v.$components;
     border-radius: 10px;
     width: 55%;
     height: 20px;
     padding: 10px;
+    color: v.$txt-color;
+    gap: .5rem;
+    cursor: pointer;
+
+
+    @include mixins.desktop-xl {
+        font-size: 18px;
+    }
 
     @include mixins.tablet{
         width: auto;
@@ -35,12 +45,14 @@
     a {
         display: flex;
         justify-content: center !important;
-        color: v.$txt-color;
         flex-direction: row !important;
+        gap: .5rem;
+        text-decoration: none;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: v.$txt-color;
 
-        @include mixins.desktop-xl {
-            font-size: 18px;
-        }
 
         .picto__container {
             margin-right: 15px;

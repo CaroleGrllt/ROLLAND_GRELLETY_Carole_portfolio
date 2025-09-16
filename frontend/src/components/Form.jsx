@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Modal from './Modal';
+import Modal from './FormModal';
 
 export default function Form() {
     const [firstName, setFirstName]     = useState('')

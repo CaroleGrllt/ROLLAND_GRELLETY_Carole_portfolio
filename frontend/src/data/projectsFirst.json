@@ -1,94 +1,82 @@
 [
     {
         "id": "1",
-        "title": "BOOKI",
-        "year": "(2023)",
-        "cover": "/cover.png",
-        "alt": "Illustration projet Booki",
-        "picture": "",
-        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "title": "ArgentBank",
+        "year": "(2025)",
+        "cover": "/covers/argentbank.webp",
+        "alt": "Illustration projet ArgentBank",
+        "subtitle": "Développement front-end d'une application web bancaire (système d'authentification, consultation et modification des informations personnelles).",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/picto_react.png",
+            "/picto/redux.svg",
+            "/picto/Axios.svg"
         ],
-        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
         "skills": [
-            "- Définir la structure d'une page web à partir d'une maquette.",
-            "- Intégrer du contenu conformément à la maquette.",
-            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
-            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
-            "- Utiliser un système de gestion de versions pour le suivi du projet."
+            "- S'authentifier à une API.",
+            "- Implémenter un gestionnaire d'état dans une application React.",
+            "- Intéragir avec une API.",
+            "- Modéliser une API."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_13_argentbank_072025",
+        "website":""
     },
     {
         "id": "2",
-        "title": "BOOKI",
-        "year": "(2023)",
-        "cover": "/cover.png",
-        "alt": "Illustration projet Booki",
-        "picture": "",
-        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "title": "Mon Vieux Grimoire",
+        "year": "(2024)",
+        "cover": "/covers/grimoire.webp",
+        "alt": "Illustration projet Mon Vieux Grimoire",
+        "subtitle": "Création du back-end d'une application de publication de livres avec NodeJS, Express et MongoDB. Implémentation des opérations CRUD.",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/nodejs-1.svg",
+            "/picto/express-109.png",
+            "/picto/mongodb-icon-2.svg"
         ],
-        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
         "skills": [
-            "- Définir la structure d'une page web à partir d'une maquette.",
-            "- Intégrer du contenu conformément à la maquette.",
-            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
-            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
-            "- Utiliser un système de gestion de versions pour le suivi du projet."
+            "- Implémenter un modèle logique de données conformément à la réglementation.",
+            "- Mettre en œuvre des opérations CRUD de manière sécurisée.",
+            "- Stocker des données de manière sécurisée."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_7_Mon-vieux-grimoire_012024",
+        "website":""
     },
     {
         "id": "3",
-        "title": "BOOKI",
-        "year": "(2023)",
-        "cover": "/cover.png",
-        "alt": "Illustration projet Booki",
-        "picture": "",
-        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "title": "HRnet",
+        "year": "(2025)",
+        "cover": "/covers/hrnet.webp",
+        "alt": "Illustration projet HRnet",
+        "subtitle": "Migration de l'application interne HRnet d'une architecture jQuery vers React dans un but d'amélioration des performances et de maintenabilité.",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/picto_react.png",
+            "/picto/redux.svg",
+            "/picto/npm.svg"
         ],
-        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
         "skills": [
-            "- Définir la structure d'une page web à partir d'une maquette.",
-            "- Intégrer du contenu conformément à la maquette.",
-            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
-            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
-            "- Utiliser un système de gestion de versions pour le suivi du projet."
+            "- Analyser la performance d'une application web.",
+            "- Déployer une application front-end.",
+            "- Refondre une application pour réduire la dette technique.",
+            "- Mettre en place son environnement Front-End.",
+            "- Produire de la documentation technique pour une application."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_14_wealthhealth_082025",
+        "website":""
     },
     {
         "id": "4",
-        "title": "BOOKI",
-        "year": "(2023)",
-        "cover": "/cover.png",
-        "alt": "Illustration projet Booki",
-        "picture": "",
-        "subtitle": "Intégrer l'interface utilisateur d'un site de location immobilière.",
+        "title": "Les petits plats",
+        "year": "(2025)",
+        "cover": "/covers/lespetitsplats.webp",
+        "alt": "Illustration projet Les Petits Plats",
+        "subtitle": "Intégrer l'interface utilisateur d'une application de recettes de cuisine (algorithme de filtrage)",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/javascript-r.svg"
         ],
-        "description": "Objectif de la mission : intégrer l'interface visuelle d'une application de réservation d'hébergement en HTML/CSS en tenant compte des maquettes mobile/tablette/ordinateur. Pour ce premier projet, pas de difficulté rencontrée.",
         "skills": [
-            "- Définir la structure d'une page web à partir d'une maquette.",
-            "- Intégrer du contenu conformément à la maquette.",
-            "- Adapter l'affichage d'un site web à différentes tailles d'écran.",
-            "- Assurer la conformité d'une page web aux standards HTML/CSS.",
-            "- Utiliser un système de gestion de versions pour le suivi du projet."
+            "- Analyser un problème informatique.",
+            "- Développer un algorithme pour résoudre un problème."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_2_Booki_042023"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_7_lespetitsplats_032025",
+        "website":""
     }
 ]

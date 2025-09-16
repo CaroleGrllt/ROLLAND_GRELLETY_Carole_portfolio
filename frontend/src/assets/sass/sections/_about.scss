@@ -41,13 +41,11 @@
             align-items: center;
 
             .img__container {
-
-                
                 img {
                     width: 150px;
                     height: auto;
                     object-fit: contain;
-                    border-radius: 100%;
+                    border-radius: 50px;
 
                     @include mixins.tablet {
                         width: 180px;

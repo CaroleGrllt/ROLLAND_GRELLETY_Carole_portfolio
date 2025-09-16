@@ -2,7 +2,7 @@ import CTA from './CTA';
 import SkillTag from './SkillTag';
 import { FaRegEye } from "react-icons/fa";
 
-export default function ProjectCard({id, title, cover, alt, subtitle, tags}) {
+export default function ProjectCard({id, title, cover, alt, subtitle, tags, onOpen}) {
     return (
         <article className='article__project'>
             <div className="cover__container">
@@ -24,7 +24,7 @@ export default function ProjectCard({id, title, cover, alt, subtitle, tags}) {
                 <CTA
                     source={<FaRegEye />}
                     info="Voir plus"
-                    link={"/project/"+id}
+                    onClick={() => onOpen?.(id)}
                 />
             </div>
         </article>

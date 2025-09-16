@@ -3,9 +3,10 @@
         "id": "1",
         "title": "FRONT-END",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/picto_react.png",
+            "/picto/redux.svg",
+            "/picto/javascript-r.svg",
+            "/picto/sass-1.svg"
         ]
     },
 
@@ -13,9 +14,9 @@
         "id": "2",
         "title": "BACK-END",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/nodejs-1.svg",
+            "/picto/express-109.png",
+            "/picto/Axios.svg"
         ]
     },
 
@@ -23,9 +24,8 @@
         "id": "3",
         "title": "BASE DE DONNEES",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/mongodb-icon-2.svg",
+            "/picto/mysql-3.svg"
         ]
     },
 
@@ -33,9 +33,10 @@
         "id": "4",
         "title": "OUTILS",
         "tags": [
-            "/logo512.png",
-            "/logo512.png",
-            "/logo512.png"
+            "/picto/github-icon-1.PNG",
+            "/picto/figma-icon.svg",
+            "/picto/Insomnia.svg",
+            "/picto/npm.svg"
         ]
     }
 ]

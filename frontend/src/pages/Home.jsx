@@ -14,6 +14,7 @@ import ProjectCard from "../components/ProjectCard";
 import SkillsCard from '../components/SkillsCard';
 import EducationCard from "../components/EducationCard";
 import Form from "../components/Form";
+import ProjectModal from "../components/ProjectModal";
 
 //REACT ICONS
 import { FaLinkedin, FaGithub, FaFileDownload } from "react-icons/fa";
@@ -25,6 +26,15 @@ import { IoSchoolSharp } from "react-icons/io5";
 export default function Home() {
 
     const [showMore, setShowMore] = useState(false);
+    const [selectedProject, setSelectedProject] = useState(null);
+
+    const openProjectById = (id) => {
+        const allProjects = [...projectsFirst, ...projectsSecond];
+        const project = allProjects.find(pr => pr.id === id);
+        if (project) setSelectedProject(project);
+    }
+
+    const closeModal = () => setSelectedProject(null);
 
     return (
         <>
@@ -64,11 +74,7 @@ export default function Home() {
                     <div className="photo__container">
                         <div className="img__container">
                             <img
-                                src="/profile-200.jpg"
-                                srcSet="/profile-200.jpg 200w,
-                                        /profile-500.jpg 500w"
-                                sizes="(max-width: 767px) 200px,
-                                        500px"
+                                src="/profile.webp"
                                 alt="profile"
                             />                       
                         </div>
@@ -96,6 +102,7 @@ export default function Home() {
                                         title={project.title}
                                         subtitle={project.subtitle}
                                         tags={project.tags}
+                                        onOpen={openProjectById}
                                     />
                                 })}
                             </CardsLayout> 
@@ -111,6 +118,7 @@ export default function Home() {
                                         title={project.title}
                                         subtitle={project.subtitle}
                                         tags={project.tags}
+                                        onOpen={openProjectById}
                                     />
                                 })}
                             </CardsLayout> 
@@ -228,6 +236,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <ProjectModal project={selectedProject} onClose={closeModal} />
         </>
     )
 }
