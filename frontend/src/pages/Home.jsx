@@ -109,15 +109,15 @@ export default function Home() {
                         </div>
                         <div className={`second-layout ${showMore ? "open" : ""}`}>
                             <CardsLayout>
-                                {projectsSecond.map((project) => {
+                                {projectsSecond.map((projectsecond) => {
                                     return <ProjectCard 
-                                        key={project.id}
-                                        id={project.id}
-                                        cover={project.cover}
-                                        alt={project.alt}
-                                        title={project.title}
-                                        subtitle={project.subtitle}
-                                        tags={project.tags}
+                                        key={projectsecond.id}
+                                        id={projectsecond.id}
+                                        cover={projectsecond.cover}
+                                        alt={projectsecond.alt}
+                                        title={projectsecond.title}
+                                        subtitle={projectsecond.subtitle}
+                                        tags={projectsecond.tags}
                                         onOpen={openProjectById}
                                     />
                                 })}

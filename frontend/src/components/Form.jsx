@@ -1,6 +1,41 @@
 import { useState } from 'react';
 import Modal from './FormModal';
 
+const NAME_REGEX = /^[A-Za-zÀ-ÖØ-öø-ÿ-]+$/; // lettres (accents) + tiret
+const ONLY_DIGITS = /^\d*$/;
+
+function sanitizeNameInput(s = '') {
+  // enlève tout sauf lettres (avec accents) et tiret
+  let v = (s || '').normalize('NFC').replace(/[^A-Za-zÀ-ÖØ-öø-ÿ-]/g, '');
+  // compresse les multiples tirets et supprime tirets en début/fin
+  v = v.replace(/-{2,}/g, '-').replace(/^-+|-+$/g, '');
+  return v;
+}
+
+function sanitizePhoneInput(s = '') {
+  return (s || '').replace(/\D/g, ''); // garde uniquement 0-9
+}
+
+function isSQLiAttempt(s = '') {
+  if (!s) return false;
+  const txt = String(s).toLowerCase();
+
+  // marqueurs/operateurs typiques
+  const redFlags = [
+    /(?:')|(?:")|(?:`)/,                 // quotes
+    /--|#|\/\*/ ,                        // commentaires SQL
+    /\bunion\b\s+\bselect\b/,            // UNION SELECT
+    /\bselect\b.*\bfrom\b/,              // SELECT ... FROM
+    /\binsert\b|\bupdate\b|\bdelete\b|\bdrop\b|\btruncate\b|\balter\b/,
+    /\bexec\b|\bexecute\b|\bxp_/,        // exec / procs
+    /\bor\b\s+1\s*=\s*1\b|\band\b\s+1\s*=\s*1\b/, // tautologies
+    /\blike\s+['"][^'"]*%/,              // LIKE '...%
+    /;.*\bshutdown\b|;.*\bgrant\b/,      // commandes après ;
+  ];
+
+  return redFlags.some((re) => re.test(txt));
+}
+
 export default function Form() {
     const [firstName, setFirstName]     = useState('')
     const [lastName, setLastName]       = useState('')
@@ -60,6 +95,13 @@ export default function Form() {
         // consentement
         if (!check) setAllErrors('consent', 'Le consentement au RGPD est nécessaire.');
 
+          // prénom / nom : lettres + tiret uniquement
+        if (firstName && !allErrors.firstName && !NAME_REGEX.test(firstName)) {
+            setAllErrors('firstName', 'Seules les lettres et le tiret (-) sont autorisés.');
+        }
+        if (lastName && !allErrors.lastName && !NAME_REGEX.test(lastName)) {
+            setAllErrors('lastName', 'Seules les lettres et le tiret (-) sont autorisés.');
+        }
 
         // email simple
         if (email && !allErrors.email) {
@@ -69,13 +111,21 @@ export default function Form() {
 
         // téléphone : au moins 10 chiffres (numéro français)
         if (phone && !allErrors.phone) {
-          const digits = phone.replace(/\D/g, '');
-          if (digits.length < 10) setAllErrors('phone', "Le numéro de téléphone semble incorrect.");
+            if (!ONLY_DIGITS.test(phone)) {
+                setAllErrors('phone', "Seuls les chiffres (0–9) sont autorisés.");
+            } else if (phone.replace(/\D/g, '').length < 10) {
+                setAllErrors('phone', "Le numéro de téléphone semble incorrect.");
+            }
         }
 
         // message : min 10 caractères
         if (message && !allErrors.message && message.trim().length < 10) {
           setAllErrors('message', 'Le message doit être de 10 caractères minimum.');
+        }
+
+        // blocage SQLi heuristique
+        if (message && !allErrors.message && isSQLiAttempt(message)) {
+            setAllErrors('message', 'Mauvais format détecté.');
         }
 
         // S'il y a au moins une erreur, on stoppe et on les affiche toutes
@@ -136,17 +186,19 @@ export default function Form() {
                         id="firstName" 
                         name="firstName"
                         type="text" 
-                        autoComplete="given-name"                    
+                        autoComplete="given-name"
+                        inputMode="text"
                         value={firstName} 
                         onChange={(e) => {
-                            setFirstName(e.target.value)
-                            setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);
+                        const v = sanitizeNameInput(e.target.value);
+                        setFirstName(v);
+                        setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);
                         }}
                         placeholder="ex. Jean" 
                         className='firstName__input'
                     />
                     {fieldErrors.firstName && (
-                      <p id="firstName-error" role="alert" className="field-error">{fieldErrors.firstName}</p>
+                        <p id="firstName-error" role="alert" className="field-error">{fieldErrors.firstName}</p>
                     )}
                 </div>
                 <div className="formcarry-block lastName__content">
@@ -156,10 +208,12 @@ export default function Form() {
                         name="lastName"
                         type="text" 
                         autoComplete="family-name"
+                        inputMode="text"
                         value={lastName} 
                         onChange={(e) => {
-                            setLastName(e.target.value)
-                            setFieldErrors(fe => fe.lastName ? { ...fe, lastName: '' } : fe);
+                        const v = sanitizeNameInput(e.target.value);
+                        setLastName(v);
+                        setFieldErrors(fe => fe.lastName ? { ...fe, lastName: '' } : fe);
                         }} 
                         placeholder="ex. Dupont" 
                         className='lastName__input'
@@ -196,13 +250,14 @@ export default function Form() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        inputMode="tel"
+                        inputMode="numeric"
                         autoComplete="tel"
                         placeholder="ex. 06 12 34 56 78"                    
                         value={phone} 
                         onChange={(e) => {
-                            setPhone(e.target.value)
-                            setFieldErrors(fe => fe.phone ? { ...fe, phone: '' } : fe);
+                        const v = sanitizePhoneInput(e.target.value);
+                        setPhone(v);
+                        setFieldErrors(fe => fe.phone ? { ...fe, phone: '' } : fe);
                         }} 
                         className='phone__input'
                     />
@@ -216,15 +271,29 @@ export default function Form() {
                 <textarea 
                     id="message"
                     name="message"
-                    rows={6}            
+                    rows={6}
                     value={message} 
                     onChange={(e) => {
-                        setMessage(e.target.value)
-                        setFieldErrors(fe => fe.message ? { ...fe, message: '' } : fe);
+                    const v = e.target.value;
+                    setMessage(v);
+
+                    setFieldErrors((prev) => {
+                        let newErr = { ...prev };
+
+                        if (isSQLiAttempt(v)) {
+                            newErr.message = 'Contenu suspect détecté (SQL) — veuillez reformuler.';
+                        } else if (v.trim() && v.length < 10) {
+                            newErr.message = 'Le message doit être de 10 caractères minimum.';
+                        } else {
+                            newErr.message = '';
+                        }
+
+                        return newErr;
+                        });
                     }} 
                     placeholder="Entrez votre message..."
                     className='message__input'>
-                </textarea>
+                </textarea>                
                 {fieldErrors.message && (
                   <p id="message-error" role="alert" className="field-error">{fieldErrors.message}</p>
                 )}
