@@ -168,6 +168,7 @@
         .project__details {
             display: flex;
             flex-direction: column;
+            gap: 30px;
 
             @include mixins.tablet {
                 flex-direction: row;
