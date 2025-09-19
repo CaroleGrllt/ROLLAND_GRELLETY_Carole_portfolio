@@ -3,13 +3,13 @@
         "id": "1",
         "title": "ArgentBank",
         "year": "(2025)",
-        "cover": "/covers/argentbank.webp",
+        "cover": "/argentbank.webp",
         "alt": "Illustration projet ArgentBank",
         "subtitle": "Développement front-end d'une application web bancaire (système d'authentification, consultation et modification des informations personnelles).",
         "tags": [
-            "/picto/picto_react.png",
-            "/picto/redux.svg",
-            "/picto/Axios.svg"
+            "/picto_react.png",
+            "/redux.svg",
+            "/Axios.svg"
         ],
         "skills": [
             "- S'authentifier à une API.",
@@ -24,13 +24,13 @@
         "id": "2",
         "title": "Mon Vieux Grimoire",
         "year": "(2024)",
-        "cover": "/covers/grimoire.webp",
+        "cover": "/grimoire.webp",
         "alt": "Illustration projet Mon Vieux Grimoire",
         "subtitle": "Création du back-end d'une application de publication de livres avec NodeJS, Express et MongoDB. Implémentation des opérations CRUD.",
         "tags": [
-            "/picto/nodejs-1.svg",
-            "/picto/express-109.png",
-            "/picto/mongodb-icon-2.svg"
+            "/nodejs-1.svg",
+            "/express-109.png",
+            "/mongodb-icon-2.svg"
         ],
         "skills": [
             "- Implémenter un modèle logique de données conformément à la réglementation.",
@@ -44,13 +44,13 @@
         "id": "3",
         "title": "HRnet",
         "year": "(2025)",
-        "cover": "/covers/hrnet.webp",
+        "cover": "/hrnet.webp",
         "alt": "Illustration projet HRnet",
         "subtitle": "Migration de l'application interne HRnet d'une architecture jQuery vers React dans un but d'amélioration des performances et de maintenabilité.",
         "tags": [
-            "/picto/picto_react.png",
-            "/picto/redux.svg",
-            "/picto/npm.svg"
+            "/picto_react.png",
+            "/redux.svg",
+            "/npm.svg"
         ],
         "skills": [
             "- Analyser la performance d'une application web.",
@@ -66,11 +66,11 @@
         "id": "4",
         "title": "Les petits plats",
         "year": "(2025)",
-        "cover": "/covers/lespetitsplats.webp",
+        "cover": "/lespetitsplats.webp",
         "alt": "Illustration projet Les Petits Plats",
         "subtitle": "Intégrer l'interface utilisateur d'une application de recettes de cuisine (algorithme de filtrage)",
         "tags": [
-            "/picto/javascript-r.svg"
+            "/javascript-r.svg"
         ],
         "skills": [
             "- Analyser un problème informatique.",

@@ -3,10 +3,10 @@
         "id": "1",
         "title": "FRONT-END",
         "tags": [
-            "/picto/picto_react.png",
-            "/picto/redux.svg",
-            "/picto/javascript-r.svg",
-            "/picto/sass-1.svg"
+            "/picto_react.png",
+            "/redux.svg",
+            "/javascript-r.svg",
+            "/sass-1.svg"
         ]
     },
 
@@ -14,9 +14,9 @@
         "id": "2",
         "title": "BACK-END",
         "tags": [
-            "/picto/nodejs-1.svg",
-            "/picto/express-109.png",
-            "/picto/Axios.svg"
+            "/nodejs-1.svg",
+            "/express-109.png",
+            "/Axios.svg"
         ]
     },
 
@@ -24,8 +24,8 @@
         "id": "3",
         "title": "BASE DE DONNEES",
         "tags": [
-            "/picto/mongodb-icon-2.svg",
-            "/picto/mysql-3.svg"
+            "/mongodb-icon-2.svg",
+            "/mysql-3.svg"
         ]
     },
 
@@ -33,10 +33,10 @@
         "id": "4",
         "title": "OUTILS",
         "tags": [
-            "/picto/github-icon-1.PNG",
-            "/picto/figma-icon.svg",
-            "/picto/Insomnia.svg",
-            "/picto/npm.svg"
+            "/github-icon-1.PNG",
+            "/figma-icon.svg",
+            "/Insomnia.svg",
+            "/npm.svg"
         ]
     }
 ]

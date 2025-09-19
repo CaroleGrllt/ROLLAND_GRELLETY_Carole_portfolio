@@ -3,13 +3,13 @@
         "id": "1",
         "title": "SportSee",
         "year": "(2025)",
-        "cover": "/covers/sportsee.webp",
+        "cover": "/sportsee.webp",
         "alt": "Illustration projet SportSee",
         "subtitle": "Développement front-end d'une application de suivi sportif, affichant les statistiques personnalisées (librairie Recharts).",
         "tags": [
-            "/picto/picto_react.png",
-            "/picto/Axios.svg",
-            "/picto/sass-1.svg"
+            "/picto_react.png",
+            "/Axios.svg",
+            "/sass-1.svg"
         ],
         "skills": [
             "- Développer des éléments graphiques avancés à l'aide de bibliothèques JavaScript.",
@@ -22,11 +22,11 @@
         "id": "2",
         "title": "FishEye",
         "year": "(2024)",
-        "cover": "/covers/fisheye.webp",
+        "cover": "/fisheye.webp",
         "alt": "Illustration projet FishEye",
         "subtitle": "Intégrer l'interface utilisateur d'une application de photographes indépendants.",
         "tags": [
-            "/picto/javascript-r.svg"
+            "/javascript-r.svg"
         ],
         "skills": [
             "- Assurer l'accessibilité d'un site web.",
@@ -40,12 +40,12 @@
         "id": "3",
         "title": "Kasa",
         "year": "(2024)",
-        "cover": "/covers/kasa.webp",
+        "cover": "/kasa.webp",
         "alt": "Illustration projet Kasa",
         "subtitle": "Développement de la nouvelle interface utilisateur de l'application de recherche immobilière Kasa.",
         "tags": [
-            "/picto/picto_react.png",
-            "/picto/sass-1.svg"
+            "/picto_react.png",
+            "/sass-1.svg"
         ],
         "skills": [
             "- Créer des composants avec React.",
