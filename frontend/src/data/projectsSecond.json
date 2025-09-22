@@ -16,7 +16,7 @@
             "- Interagir avec un service Web.",
             "- Assurer la qualité des données d'une application."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_12_sportsee_062025"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_12_sportsee_062025"
     },
     {
         "id": "6",
@@ -34,7 +34,7 @@
             "- Ecrire du code JavaScript maintenable.",
             "- Gérer les évènements d'un site avec JavaScript."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_6_fisheye_082024"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_6_fisheye_082024"
     },
     {
         "id": "7",
@@ -52,6 +52,6 @@
             "- Développer les routes d'une application web avec React Router.",
             "- Initialiser une application web avec un framework."
         ],
-        "code":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_11_kasa_102024"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_11_kasa_102024"
     }
 ]

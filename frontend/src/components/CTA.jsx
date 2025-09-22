@@ -24,7 +24,11 @@ export default function CTA({ source, info, link, download, onClick }) {
   // Cas avec lien
   return (
     <div className="cta__container">
-      <a href={link} {...(download ? { download } : {})}>
+      <a 
+        href={link} {...(download ? { download } : {})} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
         {Inner}
       </a>
     </div>

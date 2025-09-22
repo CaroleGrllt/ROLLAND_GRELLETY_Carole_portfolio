@@ -1,54 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from './FormModal';
 
-const NAME_REGEX = /^(?![ -])(?!.*[ -]$)[A-Za-zÀ-ÖØ-öø-ÿ -]+$/;
-const ONLY_DIGITS = /^\d*$/;
-
-function sanitizeNoLeadingSpace(s = '') {
-  // supprime uniquement les espaces de début
-  return (s || '').replace(/^\s+/, '');
-}
-
-function sanitizeNameInput(s = '') {
-  // garde lettres (avec accents), espaces et tirets
-  let v = (s || '')
-    .normalize('NFC')
-    .replace(/[^A-Za-zÀ-ÖØ-öø-ÿ -]/g, '');
-
-  // pas d'espaces multiples / pas de tirets multiples
-  v = v.replace(/\s{2,}/g, ' ').replace(/-{2,}/g, '-');
-
-  // pas d'espace/tiret en début/fin
-  v = v.replace(/^\s+|\s+$/g, '').replace(/^-+|-+$/g, '');
-
-  return v;
-}
-
-function sanitizePhoneInput(s = '') {
-  return (s || '').replace(/\D/g, ''); // garde uniquement 0-9
-}
-
-function isSQLiAttempt(s = '') {
-  if (!s) return false;
-  const txt = String(s).toLowerCase();
-
-  // marqueurs/operateurs typiques
-  const redFlags = [
-    /(?:')|(?:")|(?:`)/,                 // quotes
-    /--|#|\/\*/ ,                        // commentaires SQL
-    /\bunion\b\s+\bselect\b/,            // UNION SELECT
-    /\bselect\b.*\bfrom\b/,              // SELECT ... FROM
-    /\binsert\b|\bupdate\b|\bdelete\b|\bdrop\b|\btruncate\b|\balter\b/,
-    /\bexec\b|\bexecute\b|\bxp_/,        // exec / procs
-    /\bor\b\s+1\s*=\s*1\b|\band\b\s+1\s*=\s*1\b/, // tautologies
-    /\blike\s+['"][^'"]*%/,              // LIKE '...%
-    /;.*\bshutdown\b|;.*\bgrant\b/,      // commandes après ;
-  ];
-
-  return redFlags.some((re) => re.test(txt));
-}
-
 export default function Form() {
+
     const [firstName, setFirstName]     = useState('')
     const [lastName, setLastName]       = useState('')
     const [email, setEmail]             = useState('')
@@ -61,6 +15,15 @@ export default function Form() {
     const [modal, setModal]             = useState(false)
     const emptyFieldErrors = {firstName: '', lastName: '', email: '', phone: '', message: '', consent: '', website: ''}
     const [fieldErrors, setFieldErrors] = useState(emptyFieldErrors) //erreur de champ
+
+    useEffect(() => {
+    if (!success) return;                 // rien à faire si pas de message
+    const timer = setTimeout(() => {
+        setSuccess('');                     // efface le message au bout de 30s
+    }, 30000);
+
+    return () => clearTimeout(timer);     // nettoie si le composant se démonte ou si success change
+    }, [success]);
 
     const containsXMLPayload = (s = '') => {
         if (!s) return false;
@@ -75,6 +38,41 @@ export default function Form() {
         );
     };
 
+    // Détection très défensive d'entrées typiques d'injection SQL
+    const containsSQLiPayload = (s = '') => {
+    if (!s) return false;
+    const v = String(s);
+
+    // Mots-clés SQL courants (en bord de mot) + UNION SELECT
+    const kw = /\b(SELECT|INSERT|UPDATE|DELETE|DROP|UNION|ALTER|CREATE|REPLACE|TRUNCATE|EXEC|MERGE)\b/i;
+    // Séparateurs et commentaires SQL
+    const sep = /(--|#|\/\*|\*\/|;)/; 
+    // Tautologies simples ou tentatives de court-circuit (' OR 1=1, " OR "a"="a")
+    const taut = /(\bor\b|\band\b)\s+('?\d+'?='?\d+'?|"?.+?"?="?".*"?)/i;
+    // Empilements de quotes ou parenthèses anormales
+    const weird = /('{2,}|" {2,}|\(\s*\)\s*\(|\)\s*\()/;
+
+    return kw.test(v) || sep.test(v) || taut.test(v) || weird.test(v);
+    };
+
+    // Normalisation douce : supprime commentaires/points-virgules
+    const softenSQLi = (s = '') => String(s)
+    .replace(/\/\*[\s\S]*?\*\//g, '') // /* ... */
+    .replace(/--.+$/gm, '')           // -- ...
+    .replace(/#/g, '')                // # ...
+    .replace(/;/g, '');               // ;
+
+
+    // Supprime chiffres, certains caractères interdits et trim début/fin
+    const sanitizeName = (s = '') => {
+    return String(s)
+        // supprimer chiffres
+        .replace(/[0-9]/g, '')
+        // supprimer les caractères interdits ! ; # $ % ? et les chevrons < >
+        .replace(/[!;#$%?<>]/g, '')
+        // remplacer plusieurs espaces par un seul (optionnel)
+        .replace(/\s{2,}/g, ' ')
+    };
 
     function onSubmit(e){
         e.preventDefault();
@@ -84,7 +82,6 @@ export default function Form() {
 
         const allErrors = { ...emptyFieldErrors };
         const setAllErrors = (key, msg) => { if (!allErrors[key]) allErrors[key] = msg; }
-
 
         setFieldErrors(emptyFieldErrors); // reset erreurs champ        
 
@@ -96,48 +93,41 @@ export default function Form() {
         // Prévention XML injection : blocage si balisage détecté (prioritaire !)
         const xmlTargets = { firstName, lastName, email, phone, message };
         Object.entries(xmlTargets).forEach(([key, val]) => {
-          if (containsXMLPayload(String(val))) setAllErrors(key, 'Mauvais format détecté.');
+          if (containsXMLPayload(String(val))) setAllErrors(key, 'Entrée invalide.');
         });
+
+
+        // Prévention SQL injection : blocage si charge suspecte détectée
+        const sqlTargets = { firstName, lastName, email, phone, message };
+        Object.entries(sqlTargets).forEach(([key, val]) => {
+        if (containsSQLiPayload(String(val))) {
+            setAllErrors(key, 'Entrée invalide.');
+        }
+        });
+
 
         if (!firstName || firstName.trim() === '') setAllErrors('firstName', 'Le prénom est requis.');
         if (!lastName || lastName.trim() === '')  setAllErrors('lastName', 'Le nom est requis.');
         if (!email || email.trim() === '')     setAllErrors('email', "L'adresse e-mail est requise.");
         if (!message || message.trim() === '')   setAllErrors('message', 'Le message est requis.');
-
-        // consentement
         if (!check) setAllErrors('consent', 'Le consentement au RGPD est nécessaire.');
-
-          // prénom / nom : lettres + tiret uniquement
-        if (firstName && !allErrors.firstName && !NAME_REGEX.test(firstName)) {
-            setAllErrors('firstName', 'Seules les lettres, espaces et le tiret (-) sont autorisés.');
-        }
-        if (lastName && !allErrors.lastName && !NAME_REGEX.test(lastName)) {
-            setAllErrors('lastName', 'Seules les lettres, espaces et le tiret (-) sont autorisés.');
-        }
-
-        // email simple
-        if (email && !allErrors.email) {
-          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-          if (!emailOk) setAllErrors('email', "L'adresse e-mail semble invalide.");
-        }
 
         // téléphone : au moins 10 chiffres (numéro français)
         if (phone && !allErrors.phone) {
-            if (!ONLY_DIGITS.test(phone)) {
-                setAllErrors('phone', "Seuls les chiffres (0–9) sont autorisés.");
-            } else if (phone.replace(/\D/g, '').length < 10) {
-                setAllErrors('phone', "Le numéro de téléphone semble incorrect.");
+            const digits = phone.replace(/\D/g, '');
+            if (digits.length < 10) {
+                setAllErrors('phone', "Le numéro de téléphone doit comporter 10 chiffres.");
+            } else {
+                // Vérifie le préfixe autorisé (01 à 09)
+                if (!/^0[1-9]/.test(digits)) {
+                setAllErrors('phone', "Le numéro de téléphone n'est pas au bon format.");
+                }
             }
         }
 
         // message : min 10 caractères
         if (message && !allErrors.message && message.trim().length < 10) {
           setAllErrors('message', 'Le message doit être de 10 caractères minimum.');
-        }
-
-        // blocage SQLi heuristique
-        if (message && !allErrors.message && isSQLiAttempt(message)) {
-            setAllErrors('message', 'Mauvais format détecté.');
         }
 
         // S'il y a au moins une erreur, on stoppe et on les affiche toutes
@@ -196,37 +186,39 @@ export default function Form() {
                     <label htmlFor="firstName">Prénom <span className='red__star'>*</span></label>
                     <input 
                         id="firstName" 
+                        maxLength={80}
                         name="firstName"
                         type="text" 
-                        autoComplete="given-name"
-                        inputMode="text"
+                        autoComplete="given-name"                    
                         value={firstName} 
                         onChange={(e) => {
-                            const v = sanitizeNameInput(sanitizeNoLeadingSpace(e.target.value));
-                            setFirstName(v);
-                            setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);
-                        }}
+                            let cleanValue = sanitizeName(e.target.value);    // supprime chiffres + !;#$%?
+                            cleanValue = softenSQLi(cleanValue);              // supprime séquences SQL évidentes
+                            setFirstName(cleanValue);
+                            setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);                        
+                        }}                        
                         placeholder="ex. Jean" 
                         className='firstName__input'
                     />
                     {fieldErrors.firstName && (
-                        <p id="firstName-error" role="alert" className="field-error">{fieldErrors.firstName}</p>
+                      <p id="firstName-error" role="alert" className="field-error">{fieldErrors.firstName}</p>
                     )}
                 </div>
                 <div className="formcarry-block lastName__content">
                     <label htmlFor="lastName">Nom <span className='red__star'>*</span></label>
                     <input 
                         id="lastName" 
+                        maxLength={80}
                         name="lastName"
                         type="text" 
                         autoComplete="family-name"
-                        inputMode="text"
                         value={lastName} 
                         onChange={(e) => {
-                            const v = sanitizeNameInput(sanitizeNoLeadingSpace(e.target.value));
-                            setLastName(v);
+                            let cleanValue = sanitizeName(e.target.value);    
+                            cleanValue = softenSQLi(cleanValue);
+                            setLastName(cleanValue);
                             setFieldErrors(fe => fe.lastName ? { ...fe, lastName: '' } : fe);
-                        }}
+                        }}                        
                         placeholder="ex. Dupont" 
                         className='lastName__input'
                     />
@@ -240,16 +232,16 @@ export default function Form() {
                     <label htmlFor="email">Email <span className='red__star'>*</span></label>
                     <input 
                         id="email"
+                        maxLength={80}
                         name="email"
                         type="email"
                         autoComplete="email"
                         inputMode="email"                    
                         value={email} 
                         onChange={(e) => {
-                            const v = sanitizeNoLeadingSpace(e.target.value);
-                            setEmail(v);
+                            setEmail(e.target.value)
                             setFieldErrors(fe => fe.email ? { ...fe, email: '' } : fe);
-                        }}
+                        }} 
                         placeholder="ex. jean@dupont.fr" 
                         className='email__input'
                     />
@@ -261,17 +253,17 @@ export default function Form() {
                     <label htmlFor="phone">Téléphone</label>
                     <input 
                         id="phone"
+                        maxLength={10}
                         name="phone"
                         type="tel"
-                        inputMode="numeric"
+                        inputMode="tel"
                         autoComplete="tel"
                         placeholder="ex. 06 12 34 56 78"                    
                         value={phone} 
                         onChange={(e) => {
-                            const v = sanitizePhoneInput(sanitizeNoLeadingSpace(e.target.value));
-                            setPhone(v);
+                            setPhone(e.target.value)
                             setFieldErrors(fe => fe.phone ? { ...fe, phone: '' } : fe);
-                        }}
+                        }} 
                         className='phone__input'
                     />
                     {fieldErrors.phone && (
@@ -283,27 +275,19 @@ export default function Form() {
                 <label htmlFor="message">Message <span className='red__star'>*</span></label>
                 <textarea 
                     id="message"
+                    maxLength={1000}
                     name="message"
-                    rows={6}
+                    rows={6}            
                     value={message} 
                     onChange={(e) => {
-                        const v = sanitizeNoLeadingSpace(e.target.value);
-                        setMessage(v);
-                        setFieldErrors((prev) => {
-                            let newErr = { ...prev };
-                            if (isSQLiAttempt(v)) {
-                            newErr.message = 'Format non conforme, veuillez reformuler.';
-                            } else if (v.trim() && v.length < 10) {
-                            newErr.message = 'Le message doit être de 10 caractères minimum.';
-                            } else {
-                            newErr.message = '';
-                            }
-                            return newErr;
-                        });
-                    }}
+                        // supprime commentaires/; pour limiter les payloads évidents
+                        const clean = softenSQLi(e.target.value);
+                        setMessage(clean);                        
+                        setFieldErrors(fe => fe.message ? { ...fe, message: '' } : fe);
+                    }} 
                     placeholder="Entrez votre message..."
                     className='message__input'>
-                </textarea>                
+                </textarea>
                 {fieldErrors.message && (
                   <p id="message-error" role="alert" className="field-error">{fieldErrors.message}</p>
                 )}

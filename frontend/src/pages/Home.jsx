@@ -62,12 +62,12 @@ export default function Home() {
                             <CTA 
                                 source={<MdAlternateEmail/>}
                                 info='E-mail'
-                                link='mailto:carole.rolland.grellety@proton.me'
+                                link='mailto:contact@carole-rollandgrellety.fr'
                             />
                             <CTA 
                                 source={<BsFillTelephoneFill/>}
                                 info='Téléphone'
-                                link='tel:0033756857155'
+                                link='tel:0756857155'
                             />
                         </div>
                     </div>
@@ -216,7 +216,7 @@ export default function Home() {
                             <h3>Carole ROLLAND GRELLETY</h3>
                             <span className="contact__place">78600, Maisons-Laffitte<br/>(Yvelines, Ile-de-France)</span>
                             <span className="contact__tel">+33 (0)7 56 85 71 55</span>
-                            <span className="contact__email">carole.rolland.grellety@proton.me</span>
+                            <span className="contact__email">contact@carole-rollandgrellety.fr</span>
                             <div className="contact__cta">
                             <CTA 
                                 source={<FaLinkedin/>}
