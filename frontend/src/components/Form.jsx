@@ -1,14 +1,26 @@
 import { useState } from 'react';
 import Modal from './FormModal';
 
-const NAME_REGEX = /^[A-Za-zÀ-ÖØ-öø-ÿ-]+$/; // lettres (accents) + tiret
+const NAME_REGEX = /^(?![ -])(?!.*[ -]$)[A-Za-zÀ-ÖØ-öø-ÿ -]+$/;
 const ONLY_DIGITS = /^\d*$/;
 
+function sanitizeNoLeadingSpace(s = '') {
+  // supprime uniquement les espaces de début
+  return (s || '').replace(/^\s+/, '');
+}
+
 function sanitizeNameInput(s = '') {
-  // enlève tout sauf lettres (avec accents) et tiret
-  let v = (s || '').normalize('NFC').replace(/[^A-Za-zÀ-ÖØ-öø-ÿ-]/g, '');
-  // compresse les multiples tirets et supprime tirets en début/fin
-  v = v.replace(/-{2,}/g, '-').replace(/^-+|-+$/g, '');
+  // garde lettres (avec accents), espaces et tirets
+  let v = (s || '')
+    .normalize('NFC')
+    .replace(/[^A-Za-zÀ-ÖØ-öø-ÿ -]/g, '');
+
+  // pas d'espaces multiples / pas de tirets multiples
+  v = v.replace(/\s{2,}/g, ' ').replace(/-{2,}/g, '-');
+
+  // pas d'espace/tiret en début/fin
+  v = v.replace(/^\s+|\s+$/g, '').replace(/^-+|-+$/g, '');
+
   return v;
 }
 
@@ -97,10 +109,10 @@ export default function Form() {
 
           // prénom / nom : lettres + tiret uniquement
         if (firstName && !allErrors.firstName && !NAME_REGEX.test(firstName)) {
-            setAllErrors('firstName', 'Seules les lettres et le tiret (-) sont autorisés.');
+            setAllErrors('firstName', 'Seules les lettres, espaces et le tiret (-) sont autorisés.');
         }
         if (lastName && !allErrors.lastName && !NAME_REGEX.test(lastName)) {
-            setAllErrors('lastName', 'Seules les lettres et le tiret (-) sont autorisés.');
+            setAllErrors('lastName', 'Seules les lettres, espaces et le tiret (-) sont autorisés.');
         }
 
         // email simple
@@ -190,9 +202,9 @@ export default function Form() {
                         inputMode="text"
                         value={firstName} 
                         onChange={(e) => {
-                        const v = sanitizeNameInput(e.target.value);
-                        setFirstName(v);
-                        setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);
+                            const v = sanitizeNameInput(sanitizeNoLeadingSpace(e.target.value));
+                            setFirstName(v);
+                            setFieldErrors(fe => fe.firstName ? { ...fe, firstName: '' } : fe);
                         }}
                         placeholder="ex. Jean" 
                         className='firstName__input'
@@ -211,10 +223,10 @@ export default function Form() {
                         inputMode="text"
                         value={lastName} 
                         onChange={(e) => {
-                        const v = sanitizeNameInput(e.target.value);
-                        setLastName(v);
-                        setFieldErrors(fe => fe.lastName ? { ...fe, lastName: '' } : fe);
-                        }} 
+                            const v = sanitizeNameInput(sanitizeNoLeadingSpace(e.target.value));
+                            setLastName(v);
+                            setFieldErrors(fe => fe.lastName ? { ...fe, lastName: '' } : fe);
+                        }}
                         placeholder="ex. Dupont" 
                         className='lastName__input'
                     />
@@ -234,9 +246,10 @@ export default function Form() {
                         inputMode="email"                    
                         value={email} 
                         onChange={(e) => {
-                            setEmail(e.target.value)
+                            const v = sanitizeNoLeadingSpace(e.target.value);
+                            setEmail(v);
                             setFieldErrors(fe => fe.email ? { ...fe, email: '' } : fe);
-                        }} 
+                        }}
                         placeholder="ex. jean@dupont.fr" 
                         className='email__input'
                     />
@@ -255,10 +268,10 @@ export default function Form() {
                         placeholder="ex. 06 12 34 56 78"                    
                         value={phone} 
                         onChange={(e) => {
-                        const v = sanitizePhoneInput(e.target.value);
-                        setPhone(v);
-                        setFieldErrors(fe => fe.phone ? { ...fe, phone: '' } : fe);
-                        }} 
+                            const v = sanitizePhoneInput(sanitizeNoLeadingSpace(e.target.value));
+                            setPhone(v);
+                            setFieldErrors(fe => fe.phone ? { ...fe, phone: '' } : fe);
+                        }}
                         className='phone__input'
                     />
                     {fieldErrors.phone && (
@@ -274,23 +287,20 @@ export default function Form() {
                     rows={6}
                     value={message} 
                     onChange={(e) => {
-                    const v = e.target.value;
-                    setMessage(v);
-
-                    setFieldErrors((prev) => {
-                        let newErr = { ...prev };
-
-                        if (isSQLiAttempt(v)) {
-                            newErr.message = 'Contenu suspect détecté (SQL) — veuillez reformuler.';
-                        } else if (v.trim() && v.length < 10) {
+                        const v = sanitizeNoLeadingSpace(e.target.value);
+                        setMessage(v);
+                        setFieldErrors((prev) => {
+                            let newErr = { ...prev };
+                            if (isSQLiAttempt(v)) {
+                            newErr.message = 'Format non conforme, veuillez reformuler.';
+                            } else if (v.trim() && v.length < 10) {
                             newErr.message = 'Le message doit être de 10 caractères minimum.';
-                        } else {
+                            } else {
                             newErr.message = '';
-                        }
-
-                        return newErr;
+                            }
+                            return newErr;
                         });
-                    }} 
+                    }}
                     placeholder="Entrez votre message..."
                     className='message__input'>
                 </textarea>                
