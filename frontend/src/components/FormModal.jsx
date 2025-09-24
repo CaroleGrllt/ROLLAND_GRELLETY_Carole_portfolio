@@ -29,7 +29,7 @@ export default function Modal({ open, onClose }) {
                         Conformément au Règlement Général sur la Protection des Données (RGPD), 
                         vous disposez d’un droit d’accès, de rectification, d’opposition, de limitation et de suppression de vos données.  
                         <br/><br/>
-                        Vous pouvez exercer ces droits en écrivant à : <a href="mailto:contact@carole-rollandgrellety.fr">carole.rolland.grellety@proton.me</a>.  
+                        Vous pouvez exercer ces droits en écrivant à : <a href="mailto:contact@carole-rollandgrellety.fr">contact@carole-rollandgrellety.fr</a>.  
                         <br/>
                         Vos données sont conservées uniquement le temps nécessaire au traitement de votre demande, 
                         puis supprimées dans un délai maximum de 6 mois, si aucun suivi n’est nécessaire.  
