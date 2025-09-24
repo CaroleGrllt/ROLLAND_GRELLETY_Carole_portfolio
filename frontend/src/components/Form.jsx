@@ -110,7 +110,7 @@ export default function Form() {
         if (!lastName || lastName.trim() === '')  setAllErrors('lastName', 'Le nom est requis.');
         if (!email || email.trim() === '')     setAllErrors('email', "L'adresse e-mail est requise.");
         if (!message || message.trim() === '')   setAllErrors('message', 'Le message est requis.');
-        if (!check) setAllErrors('consent', 'Le consentement au RGPD est nécessaire.');
+        if (!check) setAllErrors('consent', 'Vous devez accepter la politique de confidentialité et le traitement de vos données pour pouvoir soumettre ce formulaire.');
 
         // téléphone : au moins 10 chiffres (numéro français)
         if (phone && !allErrors.phone) {
