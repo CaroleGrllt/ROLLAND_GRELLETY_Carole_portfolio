@@ -64,11 +64,12 @@ export default function ProjectModal({ project, onClose }) {
                                 info='GitHub'
                                 link={project.github}
                             />
-                            {/* <CTA 
+                            <CTA 
                                 source={<FaEarthEurope/>}
                                 info='Site'
                                 link={project.website}
-                            /> */}
+                            />
+                            <span className="project__warning">{project.warning}</span>
                         </div>
                     </div>
                 </div>

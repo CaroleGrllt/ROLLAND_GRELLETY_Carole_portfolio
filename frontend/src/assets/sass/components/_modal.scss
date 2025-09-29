@@ -114,7 +114,7 @@
         }
 
         button.modal__close {
-            background-color: transparent;
+            background-color: v.$components;
             border: none;
             border-radius: 15px;
             margin-bottom: 10px;
@@ -176,6 +176,10 @@
             }
 
             .skills__content {
+                @include mixins.tablet {
+                    width: 50%;
+                }
+
                 ul {
                     padding: 0;
                     display: flex;
@@ -189,6 +193,10 @@
             }
 
             .more__content {
+                @include mixins.tablet {
+                    width: 50%;
+                }
+
                 .links__container {
                     display: flex;
                     flex-direction: column;
@@ -197,6 +205,11 @@
 
                     .cta__container {
                         width: auto !important;
+                    }
+
+                    .project__warning {
+                        font-size: 14px;
+                        color: v.$smooth-warning;
                     }
                 }
             }

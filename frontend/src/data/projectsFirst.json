@@ -18,7 +18,8 @@
             "- Modéliser une API."
         ],
         "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_13_argentbank_072025",
-        "website":""
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_13_argentbank_072025",
+        "warning":"Le back-end se met en veille après 15 mins d'inactivité. Chaque redémarrage demande quelques secondes. Si les données ne s'affichent pas immédiatement, patientez quelques instants."
     },
     {
         "id": "2",
@@ -38,7 +39,8 @@
             "- Stocker des données de manière sécurisée."
         ],
         "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_7_Mon-vieux-grimoire_012024",
-        "website":""
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_7_Mon-vieux-grimoire_012024",
+        "warning":"Le back-end se met en veille après 15 mins d'inactivité. Chaque redémarrage demande quelques secondes. Si les données ne s'affichent pas immédiatement, patientez quelques instants."
     },
     {
         "id": "3",
@@ -60,7 +62,8 @@
             "- Produire de la documentation technique pour une application."
         ],
         "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_14_wealthhealth_082025",
-        "website":""
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_14_wealthhealth_082025",
+        "warning":""
     },
     {
         "id": "4",
@@ -77,6 +80,7 @@
             "- Développer un algorithme pour résoudre un problème."
         ],
         "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_7_lespetitsplats_032025",
-        "website":""
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_7_lespetitsplats_032025",
+        "warning":""
     }
 ]

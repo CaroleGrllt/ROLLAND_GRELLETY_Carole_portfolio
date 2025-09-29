@@ -16,7 +16,9 @@
             "- Interagir avec un service Web.",
             "- Assurer la qualité des données d'une application."
         ],
-        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_12_sportsee_062025"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_12_sportsee_062025",
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_12_sportsee_062025/user/12",
+        "warning":"Le back-end se met en veille après 15 mins d'inactivité. Chaque redémarrage demande quelques secondes. Si les données ne s'affichent pas immédiatement, patientez quelques instants."
     },
     {
         "id": "6",
@@ -34,7 +36,9 @@
             "- Ecrire du code JavaScript maintenable.",
             "- Gérer les évènements d'un site avec JavaScript."
         ],
-        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_6_fisheye_082024"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_6_fisheye_082024",
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_6_fisheye_082024/index.html",
+        "warning":""
     },
     {
         "id": "7",
@@ -52,6 +56,8 @@
             "- Développer les routes d'une application web avec React Router.",
             "- Initialiser une application web avec un framework."
         ],
-        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_11_kasa_102024"
+        "github":"https://github.com/CaroleGrllt/ROLLAND_GRELLETY_Carole_11_kasa_102024",
+        "website":"https://carolegrllt.github.io/ROLLAND_GRELLETY_Carole_11_kasa_102024",
+        "warning":""
     }
 ]

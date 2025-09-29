@@ -9,28 +9,26 @@ export default function CTA({ source, info, link, download, onClick }) {
   // Cas avec callback (modale)
   if (typeof onClick === "function") {
     return (
-      <div
+      <button
+        type="button"
         className="cta__container"
-        role="button"
-        tabIndex={0}
         onClick={onClick}
-        onKeyDown={(e) => e.key === "Enter" && onClick()}
       >
         {Inner}
-      </div>
+      </button>
     );
   }
 
   // Cas avec lien
   return (
-    <div className="cta__container">
-      <a 
-        href={link} {...(download ? { download } : {})} 
-        target="_blank" 
-        rel="noopener noreferrer"
-      >
-        {Inner}
-      </a>
-    </div>
+    <a
+      href={link}
+      {...(download ? { download } : {})}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="cta__container"
+    >
+      {Inner}
+    </a>
   );
 }
